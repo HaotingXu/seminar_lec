@@ -1,7 +1,6 @@
 \documentclass[CJK]{beamer}
 \input{macros.tex}
-
-
+\usepackage{amssymb}
 \newcommand{\field}{\mathscr{F}}
 
 \newcommand{\reals}{\mathbb{R}}
@@ -49,7 +48,7 @@
 \begin{Large}
   \bch
   \begin{center}
-\includegraphics[width = 1.2in]{cover.png}
+\includegraphics[width = 1.2in]{whopper.jpg}
 \end{center}
 
 {\bf A}pplication of {\bf Q}uantum {\bf M}echanics
@@ -88,6 +87,7 @@ h\nu = E_2 - E_1
 那么电子就会从状态1(可以是基态)跃迁到状态2(激发态)上。激发态不稳定，立刻又会落回基态，发出同样频率的光子。
 
 But why?
+\cpic{0.1}{3-5}
 \ech
 \end{frame}
 
@@ -276,7 +276,7 @@ But why?
   \ee
   通解为
   \be
-  c_1(t) = e^{i\delta t/2}\left[A\cos\left(\frac{\sqrt{\Omega^2+\delta^2}}{2}\right)+B\sin\left(\frac{\sqrt{\Omega^2+\delta^2}}{2}\right)\right]
+  c_1(t) = e^{i\delta t/2}\left[A\cos\left(\frac{\sqrt{\Omega^2+\delta^2}}{2}t\right)+B\sin\left(\frac{\sqrt{\Omega^2+\delta^2}}{2}t\right)\right]
   \ee
   
   
@@ -288,8 +288,8 @@ But why?
   \be
   \left\{
   \begin{aligned}
-    c_1(t) &=& e^{i\delta t/2}\left[\cos\left(\frac{\sqrt{\Omega^2+\delta^2}}{2}\right)-\frac{i\delta}{\sqrt{\Omega^2+\delta^2}}\sin\left(\frac{\sqrt{\Omega^2+\delta^2}}{2}\right)\right]\\
-    c_2(t) &=& -ie^{i\delta t/2}\frac{\Omega}{\sqrt{\Omega^2+\delta^2}}\sin\left(\frac{\sqrt{\Omega^2+\delta^2}}{2}\right)
+    c_1(t) &=& e^{i\delta t/2}\left[\cos\left(\frac{\sqrt{\Omega^2+\delta^2}}{2}t\right)-\frac{i\delta}{\sqrt{\Omega^2+\delta^2}}\sin\left(\frac{\sqrt{\Omega^2+\delta^2}}{2}t\right)\right]\\
+    c_2(t) &=& -ie^{i\delta t/2}\frac{\Omega}{\sqrt{\Omega^2+\delta^2}}\sin\left(\frac{\sqrt{\Omega^2+\delta^2}}{2}t\right)
     \end{aligned}
   \right.
   \ee
@@ -313,6 +313,63 @@ But why?
   \begin{center}
     \includegraphics[width = 1.0in]{rabii}
   \end{center}
+  \ech
+\end{frame}
+
+\begin{frame}\frametitle{\bch 如果矩阵元消失\ech}
+  \bch
+  矩阵元消失意味着加入振荡的电场时，激发态不会向基态衰变：激发态在电偶极子跃迁的情况下是稳定的。
+
+  但是这并不意味着激发态永远不变，可以存在其他可能的路径。
+  \ech
+\end{frame}
+\begin{frame}\frametitle{\bch 选择定则\ech}
+  \bch
+  首先,位置算符与自旋无关，这意味着要求
+  \be
+  \Delta s = \Delta m_s = 0
+  \ee
+  否则，矩阵元消失。
+  \ech
+\end{frame}
+\begin{frame}\frametitle{\bch 选择定则\ech}
+  \bch
+  哈密顿量微扰项一部分为$E_z \cdot \langle \psi|z|\psi\rangle$，实际上，利用对易关系$[L_z,z] = 0$，有
+  \be
+  \langle n^{\prime},l^{\prime}m^{\prime}|[L_z,z]|n,l,m\rangle = \hbar (m^{\prime}-m)\langle n^{\prime},l^{\prime}m^{\prime}|z|n,l,m\rangle
+  \ee
+  所以只有当$m=m^{\prime}$时，$\langle n^{\prime},l^{\prime}m^{\prime}|z|n,l,m\rangle\ne 0$。故如果电场在$z$轴，当且仅当$\Delta m = 0$时才能发生跃迁。
+  \ech
+\end{frame}
+\begin{frame}\frametitle{\bch 选择定则\ech}
+  \bch
+  如果电场在$x,y$轴，由对易关系$[L_z,x\pm iy] = \pm \hbar (x\pm iy)$可得
+  \be
+  \begin{aligned}
+  \langle n^{\prime},l^{\prime},m^{\prime}|[L_z,x\pm iy]|n,l,m\rangle &=& \hbar (m^{\prime}-m)\langle n^{\prime},l^{\prime},m^{\prime}|x\pm iy|n,l,m\rangle \\
+  &=&\pm\hbar \langle n^{\prime},l^{\prime},m^{\prime}|x\pm iy|n,l,m\rangle
+  \end{aligned}
+  \ee
+  所以只有当
+  \be
+  \Delta m = \pm 1
+  \ee
+  矩阵元$ \langle n^{\prime},l^{\prime}m^{\prime}|[L_z,x\pm iy]|n,l,m\rangle$才不为0。故如果波矢在$z$轴，则满足$\Delta m = \pm 1$才能跃迁。
+  \ech
+\end{frame}
+\begin{frame}{\bch 选择定则\ech}
+  \bch
+  同理，利用对易关系$[L^2,[L^2,\vec{x}]] = 2\hbar^2(\vec{x}L^2+L^2\vec{x})$
+  最终可以得到$\Delta l=\pm 1$时，才能发生跃迁。上述推导感觉上很凑巧，一个更加系统地方法是使用 Wigner-Eckart 定理，这个定理基于旋转群的表示论。
+  \ech
+\end{frame}
+\begin{frame}\frametitle{\bch例子\ech}
+  \bch
+  $2p\rightarrow 1s$     $\tau \simeq 10^{-9}\SIs$
+
+  $2s\rightarrow 1s$     Forbidden, find another route $\tau \simeq 10^{-1} \SIs$
+
+  对于磁偶极子的跃迁，有不同的跃迁规则。氢原子的超精细能级:10 million years!
   \ech
 \end{frame}
 \section{Spontaneous Emission}
@@ -402,67 +459,236 @@ But why?
     上面的$1/3$因子是因为考虑了各个方向的缘故。所以当矩阵元越小，激发态生存的时间就越长。
     \ech
   \end{frame}
-\section{Selection Rules}
-\begin{frame}\frametitle{\bch 如果矩阵元消失\ech}
-  \bch
-  矩阵元消失意味着加入振荡的电场时，激发态不会向基态衰变：激发态在电偶极子跃迁的情况下是稳定的。
 
-  但是这并不意味着激发态永远不变，可以存在其他可能的路径。
-  \ech
-\end{frame}
-\begin{frame}\frametitle{\bch 对自旋的限制\ech}
+\section{Toy Model of Photons}
+\begin{frame}\frametitle{\bch光子状态的描述\ech}
   \bch
-  首先,位置算符与自旋无关，这意味着要求
+  每一个光子的状态可以由它的动量和偏振来描述。偏振可以分解为两种偏振态(如左旋和右旋)，使用$\lambda$来标记$(\lambda = 1,2)$。对于大量的光子，我们对于他们的偏振和动量进行分类，我们数一数对于确定动量和偏振的光子有多少个。故光子的量子态可以记为
   \be
-  \Delta s = \Delta m_s = 0
+  |\{n_{\vec{k},\lambda}\}\rangle
   \ee
-  否则，矩阵元消失。
+  这样我们就完全描述了一堆光子，没有光子的真空记为$|0\rangle$。对于具有相同动量和偏振的光子，我们无法分辨。
   \ech
 \end{frame}
-\begin{frame}\frametitle{\bch 对$z$轴角动量的限制\ech}
+\begin{frame}\frametitle{\bch产生与湮灭算符\ech}
   \bch
-  哈密顿量微扰项一部分为$E_z \cdot \langle \psi|z|\psi\rangle$，实际上，利用对易关系$[L_z,z] = 0$，有
+  与通常我们研究的粒子不同，光子可以凭空产生，光子数不守恒。受简谐振子的启发，我们对于特定的动量和偏振，引入产生和湮灭算符$a_{\vec{k},\lambda}^{\dagger},a_{\vec{k},\lambda}$,他们满足像谐振子中升降算符一样的对易关系
   \be
-  \langle n^{\prime},l^{\prime}m^{\prime}|[L_z,z]|n,l,m\rangle = \hbar (m^{\prime}-m)\langle n^{\prime},l^{\prime}m^{\prime}|z|n,l,m\rangle
+     [a_{\vec{k},\lambda},a_{\vec{k}^{\prime},\lambda^{\prime}}^{\dagger}]=\delta_{\vec{k}\vec{k}^{\prime}}\delta_{\lambda\lambda^{\prime}}
   \ee
-  所以只有当$m=m^{\prime}$时，$\langle n^{\prime},l^{\prime}m^{\prime}|z|n,l,m\rangle\ne 0$。故如果电场在$z$轴，当且仅当$\Delta m = 0$时才能发生跃迁。
-  \ech
-\end{frame}
-\begin{frame}\frametitle{\bch 对$z$轴角动量的限制\ech}
-  \bch
-  如果电场在$x,y$轴，由对易关系$[L_z,x\pm iy] = \pm \hbar (x\pm iy)$可得
+  因此$ |\{n_{\vec{k},\lambda}\}\rangle$记为
   \be
-  \begin{aligned}
-  \langle n^{\prime},l^{\prime},m^{\prime}|[L_z,x\pm iy]|n,l,m\rangle &=& \hbar (m^{\prime}-m)\langle n^{\prime},l^{\prime},m^{\prime}|x\pm iy|n,l,m\rangle \\
-  &=&\pm\hbar \langle n^{\prime},l^{\prime},m^{\prime}|x\pm iy|n,l,m\rangle
-  \end{aligned}
+  |\{n_{\vec{k},\lambda}\}\rangle = \prod_{\vec{k},\lambda} \frac{(a_{\vec{k},\lambda}^{\dagger})^{n_{\vec{k},\lambda}}|0\rangle}{\sqrt{n_{\vec{k},\lambda}!}}
   \ee
-  所以只有当
+  \ech
+\end{frame}
+\begin{frame}\frametitle{\bch哈密顿量\ech}
+  \bch
+  因此，光子的哈密顿量为
   \be
-  \Delta m = \pm 1
+  H = \sum_{\vec{k},\lambda} \left(\hbar \omega a_{\vec{k},\lambda}^{\dagger}a_{\vec{k},\lambda}+\frac{1}{2}\right)
   \ee
-  矩阵元$ \langle n^{\prime},l^{\prime}m^{\prime}|[L_z,x\pm iy]|n,l,m\rangle$才不为0。故如果波矢在$z$轴，则满足$\Delta m = \pm 1$才能跃迁。
+  由这个哈密顿量实际上可以得到$|\{n_{\vec{k},\lambda}\}\rangle$是本征态，能量的本征值为
+  \be
+  E = n_{\vec{k},\lambda} \hbar \omega
+  \ee
   \ech
 \end{frame}
-\begin{frame}{\bch 对$l$的限制\ech}
+\begin{frame}\frametitle{\bch相干态\ech}
   \bch
-  同理，利用对易关系$[L^2,[L^2,\vec{x}]] = 2\hbar^2(\vec{x}L^2+L^2\vec{x})$
-  最终可以得到$\Delta l=\pm 1$时，才能发生跃迁。上述推导感觉上很凑巧，一个更加系统地方法是使用 Wigner-Eckart 定理，这个定理基于旋转群的表示论。
+  有一种特殊的状态，模拟了经典力学中的谐振子，它是
+  \be
+  |\alpha\rangle = e^{\alpha a^{\dagger} - \alpha^{*}a} |0\rangle = e^{-|\alpha^2|/2}e^{\alpha a^{\dagger}}|0\rangle
+  \ee
+  其中参数$\alpha$与总光子数有关
+  \be
+  n = \langle \alpha |a^{\dagger}a|\alpha\rangle = |\alpha|^2
+  \ee
+  如何产生这样一个量子态?详见附录。
   \ech
 \end{frame}
-\begin{frame}\frametitle{\bch例子\ech}
+\begin{frame}\frametitle{\bch 杰恩斯-卡明斯模型\ech}
   \bch
-  $2p\rightarrow 1s$     $\tau \simeq 10^{-9}\SIs$
-
-  $2s\rightarrow 1s$     Forbidden, find another route $\tau \simeq 10^{-1} \SIs$
-
-  对于磁偶极子的跃迁，有不同的跃迁规则。氢原子的超精细能级:10 million years!
+  现在，有了光子的toy model，我们可以研究光子如何与原子相互作用。我们将原子的基态记作$|\downarrow\rangle = (0,1)^{T}$，激发态记作$|\uparrow\rangle = (1,0)^{T}$。因此原子的哈密顿量为
+  \be
+  H =\frac{1}{2}\hbar \omega_0\left(
+  \begin{array}{cc}
+    1&0\\0&-1
+  \end{array}
+  \right)
+  \ee
+  我们考虑原子的周围有一群光子，光子的状态和哈密顿量为(略去下标)
+  \bea
+  |n\rangle &=& \frac{(a^{\dagger})^n}{\sqrt{n!}}|0\rangle\\
+  H &=& \hbar \omega (a^{\dagger}a+1/2)
+  \eea
+  \ech
+\end{frame}
+\begin{frame}{\bch 杰恩斯-卡明斯模型\ech}
+  \bch
+  将原子的希尔伯特空间和光子的希尔伯特空间做直积
+  \be
+  \mathcal{H} = \mathcal{H}_{\rm atom} \bigotimes \mathcal{H}_{\rm photons}
+  \ee
+  例如，具有$n$个光子且原子处于激发态就表示为$|n;\uparrow\rangle$。为了描述光子和原子作用，哈密顿量为
+  \be
+  H_{JC} = \frac{\hbar}{2} \left(
+  \begin{array}{cc}
+    \omega_0 & ga \\
+    ga^{\dagger} & -\omega_0
+  \end{array}
+  \right)
+  +\hbar\omega a^{\dagger} a
+  \ee
+  其中$g$表征光子和原子的耦合。上面的哈密顿量又被称作杰恩斯-卡明斯(Jaynes-Cummings)模型。
+  \ech
+\end{frame}
+\begin{frame}{\bch 思考题\ech}
+  \bch
+    \be
+  H_{JC} = \frac{\hbar}{2} \left(
+  \begin{array}{cc}
+    \omega_0 & ga \\ ga^{\dagger} & -\omega_0 \end{array}\right)
+  +\hbar\omega a^{\dagger} a
+  \ee
+  这个哈密顿量如何与态$|n-1;\uparrow\rangle$作用?
+  \ech
+  \begin{center}
+\includegraphics[width = 1.2in]{not_understand.jpg}
+\end{center}
+\end{frame}
+\begin{frame}\frametitle{\bch 计算矩阵元\ech}
+  \bch
+  我们研究从状态$|n-1;\uparrow\rangle$到状态$|n;\downarrow\rangle$的演化，为此我们要计算上面哈密顿量的矩阵元。计算结果为
+  \be
+  H_n =\left(
+  \begin{array}{cc}
+    (n-1)\omega+\frac{1}{2}\omega_0 &\frac{1}{2}g\sqrt{n} \\
+    \frac{1}{2}g\sqrt{n} & n\omega - \frac{1}{2} \omega_0
+  \end{array}
+  \right)
+  \ee
+  这意味着原子的基态和激发态并不是这个哈密顿量的本征态，经过计算，能量的本征值为
+  \be
+  E_{\pm} = \left( n+ \frac{1}{2}\right) \hbar \omega \pm \frac{1}{2}\hbar\sqrt{g^2n+\delta^2}
+  \ee
+  本征态为
+  \bea
+  |n_+\rangle &=& \sin\theta |n-1;\uparrow\rangle-\cos\theta|n;\downarrow\rangle \\
+  |n_-\rangle &=& \cos\theta |n-1;\uparrow\rangle+\sin\theta|n;\downarrow\rangle 
+  \eea
+  其中$\tan(2\theta) = \frac{g\sqrt{n}}{\delta},\, \delta = \omega_0-\omega$。
+  \ech
+\end{frame}
+\begin{frame}\frametitle{\bch 再论拉比进动\ech}
+  \bch
+  初始情况，原子处于基态$|\Psi (t=0)\rangle =|n,\downarrow\rangle = \sin\theta|n_-\rangle - \cos\theta|n_+\rangle$,之后开始演化
+  \be
+  |\Psi (t)\rangle =e^{-iE_-t/\hbar}\sin\theta|n_-\rangle -e^{-iE_+t/\hbar} \cos\theta|n_+\rangle
+  \ee
+  计算得到激发态的概率为
+  \be
+  P_\uparrow (t)= \frac{g^2n}{g^2n + \delta^2} \sin^2 \left(\frac{\sqrt{g^2n+\delta^2}t}{2}\right)
+  \ee
+  这与前面得到的结果相同，拉比频率$\Omega = g\sqrt{n}$。
+  \ech
+\end{frame}
+\begin{frame}\frametitle{\bch再论拉比进动\ech}
+  \bch
+  这次，我们将周围的光子换成相干态的光子(激光)
+  \be
+  |\Psi\rangle = e^{-|\alpha|^2/2}e^{\alpha a^{\dagger}}|0,\downarrow\rangle = e^{-|\alpha|^2/2}\sum_{n=0}^{\infty} \frac{\alpha^n}{\sqrt{n!}} |n,\downarrow\rangle
+  \ee
+  考虑相干态中有大量的光子$|\alpha|\gg 1$,通过同样地方法求态的演化，可以得到激发态的概率
+  \be
+  P_{\uparrow}(t) = e^{-|\alpha|^2}\sum_{n=0}^{\infty} \frac{|\alpha|^{2n}}{n!}\sin^2\left(\frac{g\sqrt{n}t}{2}\right)
+  \ee
+  \ech
+\end{frame}
+\begin{frame}\frametitle{\bch 死亡与复生\ech}
+  \bch
+  激发态概率
+  \be
+  P_{\uparrow}(t) = \frac{1}{2}-\frac{1}{2}e^{-|\alpha|^2}\sum_{n=0}^{\infty} \frac{|\alpha|^{2n}}{n!}\cos\left(g\sqrt{n}t\right)
+  \ee
+  考察系数$\frac{|\alpha|^{2n}}{n!}$,取对数并利用斯特林公式
+  \be
+  \ln\frac{|\alpha|^{2n}}{n!} \simeq 2n\ln |\alpha| - n\ln n +n
+  \ee
+  由此可知，当$n = |\alpha|^2$时上面的系数有最大值。我们将其在极大值附近泰勒展开到二阶
+  \be
+  \frac{|\alpha|^{2n}}{n!} \simeq \frac{1}{2\pi |\alpha|^2} e^{|\alpha|^2 - m^2/2|\alpha^2|}
+  \ee
+  其中$m = n-|\alpha|^2$。如果$|\alpha|^2$充分大，求和可以从$-\infty$到$\infty$。
+  \ech
+\end{frame}
+\begin{frame}\frametitle{\bch 死亡与复生\ech}
+  \bch
+  所以我们有
+  \be
+  P_{\uparrow}(t) = \frac{1}{2}-\frac{1}{2}\sum_{m=-\infty}^{\infty}  e^{- m^2/2|\alpha^2|}\cos(gt\sqrt{|\alpha^2|+m})
+  \ee
+  画出来如下图所示。
+  \cpic{0.2}{resurrection}
+  \ech
+\end{frame}
+\begin{frame}\frametitle{\bch 死亡与复生\ech}
+  \bch
+  不断地沉默与复生，直到最后出现不稳定的波动。
+  \cpic{0.3}{overall}
+  \ech
+\end{frame}
+\begin{frame}\frametitle{\bch 总结\ech}
+ \bch
+ 能发出光来就不错了。
+  \ech
+\end{frame}
+\section{Appendix}
+\begin{frame}\frametitle{\bch 附录：如何产生相干态\ech}
+  \bch
+  我们来说明，下面的哈密顿量可以产生相干态
+  \be
+  H = \hbar \omega\left(a^{\dagger}a+\frac{1}{2}\right) + \hbar(f^{*}(t)a+f(t) a^{\dagger})
+  \ee
+  \ech
+\end{frame}
+\begin{frame}\frametitle{\bch相互作用绘景\ech}
+  \bch
+  求解这个哈密顿量几乎不可能，我们借助于相互作用绘景。相互作用绘景将哈密顿量分解成两项$H = H_0 +H_I$，其中$H_0$一般是我们熟知的系统，而$H_I$是对于系统的微扰。相互作用绘景中，态矢和算符的定义为
+  \bea
+  |\psi\rangle_I &=& e^{iH_0 t} |\psi\rangle_S \\
+  \mathcal{A}_I &=& e^{iH_0 t}\mathcal{A}_S e^{-iH_0 t}
+  \eea
+  从薛定谔绘景的算符和态矢演化方程出发，可以得到相互作用绘景态矢和算符的演化方程
+  \bea
+  i\hbar \frac{d|\psi\rangle}{dt} &=& H_I |\psi\rangle \\
+  \frac{d\mathcal{A}}{dt} &=& \frac{i}{\hbar}[H,\mathcal{A}]
+  \eea
+  可以证明，不论在哪个绘景，矩阵元$\langle \psi_1|\mathcal{A}|\psi_2\rangle$相同。
+  \ech
+\end{frame}
+\begin{frame}\frametitle{\bch 时间演化算符\ech}
+  \bch
+  首先求得$H_I$在相互作用绘景中的形式，根据定义
+  \be
+  H_I = \hbar e^{iH_0 t/\hbar}(f^{*}(t)a+f(t) a^{\dagger})e^{-iH_0 t/\hbar} = \hbar\left( e^{-i\omega t} f^{*}(t)a+e^{i\omega t}f(t)a^{\dagger}\right)
+  \ee
+  由演化算符的方程
+  \be
+  i\hbar \frac{\partial U_I}{\partial t} = H_I U_I
+  \ee
+  得到解是
+  \be
+  U_I(t) = \exp \left(\alpha(t)a^{\dagger} - \alpha^{*}a+i\varphi(t)\right)
+  \ee
+  其中$\alpha = -i \int dt^{\prime}f(t^{\prime})e^{i\omega t^{\prime}},\, \varphi(t) = \frac{1}{2}\int dt^{\prime}{\rm Im}(\dot{\alpha}^{*}\alpha)$。
+  \ech
+\end{frame}
+\begin{frame}\frametitle{\bch 构造相干态\ech}
+  \bch
+  如果取$f(t) = f_0 e^{-i\omega t}$，就得到了我们要的相干态。
   \ech
 \end{frame}
 
   
-
-  
-  
-    
 \end{document}
