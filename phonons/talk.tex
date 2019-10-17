@@ -412,7 +412,7 @@ xuht9@mail2.sysu.edu.cn
   \be
   \begin{aligned}
     &\pi_i(\vec{x},t)\\
-    &= \rho\sum_s \int \frac{d^3k}{(2\pi)^3}\frac{1}{2\rho \omega_s(k)}\epsilon^{s}_{i}\cdot(-i\omega_s) \left(a_s(\vec{k})e^{i(\vec{k}\cdot\vec{x} - \omega_s t)}+a_s^{\dagger}(\vec{k})e^{-i(\vec{k}\cdot\vec{x} - \omega_s t)}\right)
+    &= \rho\sum_s \int \frac{d^3k}{(2\pi)^3}\frac{1}{2\rho \omega_s(k)}\epsilon^{s}_{i}\cdot(-i\omega_s) \left(a_s(\vec{k})e^{i(\vec{k}\cdot\vec{x} - \omega_s t)}-a_s^{\dagger}(\vec{k})e^{-i(\vec{k}\cdot\vec{x} - \omega_s t)}\right)
     \end{aligned}
   \ee
   \ech
@@ -426,7 +426,7 @@ xuht9@mail2.sysu.edu.cn
    \ee
    然后从上面的式子反解出$a_s,a_s^{\dagger}$，然后求得产生湮灭算符的对易关系
    \be
-      [a_s(\vec{k}),a_{s^{\prime}}^\dagger(\vec{k}^{\prime})] = \delta_{ss^{\prime}}\delta^3(\vec{k} - \vec{k}^{\prime})
+      \left[a_s(\vec{k}),a_{s^{\prime}}^\dagger(\vec{k}^{\prime})\right] = \delta_{ss^{\prime}}\delta^3(\vec{k} - \vec{k}^{\prime})
       \ee
       据说还能推出哈密顿量
       \be
