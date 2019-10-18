@@ -48,7 +48,7 @@
 \begin{Large}
   \bch
   \begin{center}
-\includegraphics[width = 1.5in]{phonon_cover}
+\includegraphics[width = 1.5in]{whopper}
 \end{center}
 
 {\bf A}pplication of {\bf Q}uantum {\bf M}echanics
@@ -229,7 +229,7 @@ xuht9@mail2.sysu.edu.cn
 \end{frame}
 \begin{frame}\frametitle{\bch声学分支与光学分支\ech}
   \bch
-  因此声学分支意味着振动是同相位的，就像声音在固体中传播。在光学分支，相邻两个原子振动反相，在晶体中，相邻两个原子一般电荷相反(如$NaCl$晶体)，反相意味着每两个原子会靠的很近，形成电偶极子，电偶极距的大小会有一个角频率$\omega_+$的振动，这意味着这些小电偶极子可以吸收或发射光子，因此称为光学分支。在实验中确实观察到了这些特点，下图是实验测得的$NaCl$晶体的色散曲线
+  因此声学分支意味着振动是同相位的，就像声音在固体中传播。在光学分支，相邻两个原子振动反相，在晶体中，相邻两个原子一般电荷相反(如$\mathrm{NaCl}$晶体)，反相意味着每两个原子会靠的很近，形成电偶极子，电偶极距的大小会有一个角频率$\omega_+$的振动，这意味着这些小电偶极子可以吸收或发射光子，因此称为光学分支。在实验中确实观察到了这些特点，下图是实验测得的$\mathrm{NaCl}$晶体的色散曲线
   \cpic{0.3}{nacl}
   \ech
 \end{frame}
@@ -316,7 +316,7 @@ xuht9@mail2.sysu.edu.cn
   \be
   p_n(t) = P_0(t) + \sum_{l\ne 0}im\omega_l \left[\alpha_l e^{-i(\omega_lt - k_lna)} \right]
   \ee
-  反解出傅里叶变换的系数
+  简单起见，我们令$t=0$，反解出傅里叶变换的系数
   \bea
   \alpha_l &=& \frac{1}{2m\omega_lN}\sum_n e^{-ik_lna}(m\omega_l u_n + ip_n) \\
   \alpha_l^{\dagger} &=& \frac{1}{2m\omega_lN} \sum_n e^{ik_lna}(m\omega_l u_n - ip_n)\\
@@ -339,9 +339,70 @@ xuht9@mail2.sysu.edu.cn
   \ee
   \ech
 \end{frame}
+\begin{frame}
+  \bch
+  前方有硬核推导，请做好战斗准备
+  \cpic{0.1}{smile}
+  \ech
+\end{frame}
+\begin{frame}\frametitle{\bch哈密顿量的计算\ech}
+  \bch
+  将上面的定义带入经典力学的哈密顿量中
+  \be
+  H = \sum_n \frac{p_n^2}{2m} + \frac{\lambda}{2}\sum_n\left(u_n - u_{n-1}\right)^2
+  \ee
+  在这里我只计算比较重要的后半部分，前半部分大家可以自己验证。首先得到
+  \be
+  u_n - u_{n-1} = \sum_{l\ne 0} \left[\left(1-e^{-ik_la}\right)\alpha_le^{-i(\omega_l t - k_lna)}+\left(1-e^{ik_la}\right)\alpha_l^{\dagger}e^{i(\omega_l t - k_lna)}\right]
+  \ee
+  记上式中括号里面的东西为$\xi_{nl}$，则对上式平方再求和为
+  \be
+  \sum_n\left(u_n - u_{n-1}\right)^2 = \sum_n \left(\sum_{l\ne 0}\xi_{nl}\right)\left(\sum_{l^{\prime}\ne 0}\xi_{nl^{\prime}}\right) = \sum_n \sum_{l,l^{\prime}\ne 0} \xi_{nl}\xi_{nl^{\prime}}
+  \ee
+  \ech
+\end{frame}
+\begin{frame}
+  \bch
+  \be
+  \begin{aligned}
+    &= \sum_n \sum_{l,l^{\prime}\ne 0}\left[\left(1-e^{-ik_la}\right)\left(1-e^{-ik_{l^{\prime}}a}\right)\alpha_l\alpha_{l^{\prime}}e^{-i(\omega_l+\omega_{l^{\prime}})t +i (k_l+k_l^{\prime})na}\right.\\
+      & \left. +\left(1-e^{ik_la}\right)\left(1-e^{ik_{l^{\prime}}a}\right)\alpha_l^{\dagger}\alpha_{l^{\prime}}^{\dagger}e^{i(\omega_l+\omega_{l^{\prime}})t -i (k_l+k_l^{\prime})na}\right.\\
+      &\left. +\left(1-e^{-ik_la}\right)\left(1-e^{ik_{l^{\prime}}a}\right) \alpha_l\alpha_{l^{\prime}}^{\dagger}e^{-i(\omega_l-\omega_{l^{\prime}})t +i (k_l-k_l^{\prime})na}\right.\\
+      &\left.+\left(1-e^{ik_la}\right)\left(1-e^{-ik_{l^{\prime}}a}\right) \alpha_l^{\dagger}\alpha_{l^{\prime}}e^{i(\omega_l-\omega_{l^{\prime}})t -i (k_l-k_l^{\prime})na}\right]\\
+  \end{aligned}
+  \ee
+  \cpic{0.2}{depress}
+  \ech
+\end{frame}
+\begin{frame}
+  \bch
+  现在交换对$n$求和与对$l$求和，由于$k_l$与$l$的关系是线性关系，故只有$l=-l^{\prime}$的项被保留下来，前两项化简为
+  \be
+  N \sum_{l\ne 0 }4\sin^2\left(\frac{k_la}{2}\right)\left[ \alpha_l\alpha_{-l}e^{-2i\omega_l t}+\alpha_l^{\dagger}\alpha_{-l}^{\dagger}e^{2i\omega_lt}\right]
+  \ee
+  我也不知道为什么，上面的式子为0。(可以试试连续化并化求和为积分，有人试出来告诉我)。
+  \ech
+\end{frame}
+\begin{frame}
+  \bch
+  对于第三项和第四项，我们采用同样的操作，交换求和次序，发现只有当$l=l^{\prime}$时才不能为0，因此我们的工作量又缩小了许多,因此有
+  \be
+  \frac{\lambda}{2}\sum_n\left(u_n - u_{n-1}\right)^2 =\frac{\lambda}{2} N\sum_l 4\sin^2\left(\frac{k_la}{2}\right) \left(\alpha_l^{\dagger}\alpha_l + \alpha_l\alpha_l^{\dagger}\right)
+  \ee
+  这时再请出我们的对易关系
+  \be
+  \left[\alpha_{l},\alpha_{l^{\prime}}^{\dagger}\right] = \frac{\hbar}{2m\omega_lN}\delta_{ll^{\prime}}
+  \ee
+  并结合色散关系，准确无误地推导出了
+  \be
+  \frac{\lambda}{2}\sum_n\left(u_n - u_{n-1}\right)^2 = \sum_l\hbar \omega_l \left(a_l^{\dagger}a_l+\frac{1}{2}\right)
+  \ee
+  \ech
+\end{frame}
+
 \begin{frame}\frametitle{\bch 哈密顿量\ech}
   \bch
-  将上面的定义带入经典力学的哈密顿量中，得到
+  最后我们得到
   \be
   H = \frac{P_0^2}{2Nm} + \sum_l\hbar \omega_l \left(a_l^{\dagger}a_l+\frac{1}{2}\right)
   \ee
@@ -349,12 +410,21 @@ xuht9@mail2.sysu.edu.cn
   \be
   H = \sum_l\hbar \omega_l \left(a_l^{\dagger}a_l\right)
   \ee
-  于是，格点的这种振动行为可以认为具有动量$\hbar k_l$，因此它表现得像一个量子化的粒子，这个粒子就是格点的振动，叫做声子。态函数表示为
+  于是，做完量子化之后(又被叫做二次量子化)，它表现得像一个量子化的粒子，具有离散化的能量和动量。这个粒子叫做声子。它的态函数表示为
   \be
   |\psi\rangle = \prod_l \frac{(a_l^{\dagger})^{n_l}}{\sqrt{n_l!}}|0\rangle
   \ee
   \ech
 \end{frame}
+
+\begin{frame}\frametitle{\bch小结\ech}
+  \bch
+  到目前为止，我们对\textbf{波动方程}进行量子化，得到了声子。前面的$u_n$可以叫做位移场。那么现在我们大胆猜测，是不是自然界所有的粒子都可以由某个波动方程量子化得到？比如说，将麦克斯韦方程拿来量子化就得到了光子？爱因斯坦场方程拿来量子化就得到引力子？？？？
+
+  但是这样的观点有一点缺陷，那就是所有的粒子难道都对应着某个物理实在的波动？我们无法对此做出回答，但是我们可以另辟蹊径，我们知道从最小作用量原理也可以得到波动方程，那么我们把拉氏量拿过来做量子化，不也可以得到粒子？这便是量子场论的基本观点，场量子化得到粒子。
+  \ech
+\end{frame}
+
 \section{From Atoms to Fields}
 \begin{frame}\frametitle{\bch对原子位移连续化得到经典场论\ech}
   \bch
@@ -398,13 +468,13 @@ xuht9@mail2.sysu.edu.cn
   \ee
   \ech
 \end{frame}
-\begin{frame}\frametitle{\bch 将场量子化得到量子的声子\ech}
+\begin{frame}\frametitle{\bch 将场量子化得到声子\ech}
   \bch
   上面的通解为
   \be
   u_i(\vec{x},t) = \sum_s \int \frac{d^3k}{(2\pi)^3}\frac{1}{2\rho \omega_s(k)}\epsilon^{s}_{i} \left(a_s(\vec{k})e^{i(\vec{k}\cdot\vec{x} - \omega_s t)}+a_s^{\dagger}(\vec{k})e^{-i(\vec{k}\cdot\vec{x} - \omega_s t)}\right)
   \ee
-  将原子的行为使用经典场论来描述丢失了声子的离散性质，为了显现他们，需要将场量子化。将场$u(\vec{x})$变为算符，动量算符为
+  根据前面的论述，我们试图将场量子化得到粒子。将场$u(\vec{x})$变为算符，动量算符为
   \be
   \pi_i(\vec{x}) = \frac{\partial \mathcal{L}}{\partial \dot{u}_i} = \rho \dot{u}_i
   \ee
@@ -442,12 +512,14 @@ xuht9@mail2.sysu.edu.cn
 \end{frame}
 \begin{frame}\frametitle{\bch量子场论\ech}
   \bch
-  我们将上面的观点进行推广，自然界中所有的基本粒子，比如电子、夸克、光子等等，都是一些量子化的场。这些观点都是由上面的声子引起的。
+  因此可以看到，对于经典的振动，将拉格朗日量拿来做量子化，确实得到了声子。这样便理解了量子场论的核心观点，场量子化得到粒子。
+
+  至此，我们关于凝聚态物理学的介绍就完结了。
   \ech
 \end{frame}
-\begin{frame}\frametitle{\bch 未来有什么?\ech}
-  Is there also a lesson to take away from the first idea above? Could it be that the fundamental fields of Nature themselves arise from coarse-graining something smaller? The honest answer is that we don't know. However, perhaps surprisingly, all signs point towards this not being the case. First, and most importantly, there is no experimental evidence that the fundamental fields in our Universe have a discrete underpinning. But at the theoretical level, there are some deep mathematical reasons -- to do with chiral fermions and topology -- which suggest that it is not possible to find a discrete system from which the known laws of physics emerge. It would appear that our Universe does not have something akin to the atomic lattice which underlies the phonon field. Understanding these issues remains a vibrant topic of research, both in condensed
-matter physics and in high energy physics.
+\begin{frame}\frametitle{\bch 未完结的课题\ech}
+  \bch
+  那么，如果每一种粒子的场都是像声子这样，是更小尺度上的粒子的振动呢？这样就可以无限迭代了。诚实的回答是，我们不知道。但是现在所有的理论和实验都否定这一有趣的猜想。在理论上，手征费米子和拓扑有关理论表明，不可能找到一个离散的系统使得现有的物理定律成立。也许我们的宇宙不喜欢这样的格点吧。为了深入的理解这些问题，还需要在凝聚态物理和高能物理上做很多的研究。
+  \ech
 \end{frame}
-
 \end{document}
