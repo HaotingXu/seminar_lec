@@ -73,9 +73,14 @@ xuht9@mail2.sysu.edu.cn
 
 
 \end{frame}
-\begin{frame}\frametitle{\bch前情回顾\ech}
+\begin{frame}\frametitle{\bch内容提要\ech}
   \bch
-  前面两章我们学习了电子如何在固定的原子中运动。在实际的材料中，原子在平衡位置附近作微小振动。原子的这样振动产生了我们通常所说的声波——在量子力学中叫做声子(类比光子和光波)。那么原子究竟如何振动，原子振动会对以前电子的能带结构有什么改变?我们还将看到，声子的方法也可以运用到场中。
+  \begin{enumerate}
+  \item 声音在固体中的传播--经典图像
+  \item 原子振动对于能带的影响
+  \item 波动方程量子化
+  \item 场量子化
+    \end{enumerate}
   \begin{center}
     \includegraphics[width = 1.2in]{phonon}
   \end{center}
@@ -155,7 +160,7 @@ xuht9@mail2.sysu.edu.cn
   这时由于双原子出现的周期为$2a$，故作傅里叶变换时，应当将$a$换成$2a$，相应的布里渊区缩小一倍。对上面的方程进行离散傅里叶变换，设奇数项的傅里叶变换为$b_{2n-1}$，偶数项的傅里叶变换为$a_{2n}$，则有
   \bea
   m\ddot{a}_{2n}&=&-\lambda (2a_{2n} - b_{2n+1}(1+e^{-2ika}))\\
-  m\ddot{b}_{2n+1}&=& -\lambda (2b_{2n+1} - a_{2n}(1+e^{2ika}))
+  M\ddot{b}_{2n+1}&=& -\lambda (2b_{2n+1} - a_{2n}(1+e^{2ika}))
   \eea
   \ech
 \end{frame}
@@ -245,7 +250,7 @@ xuht9@mail2.sysu.edu.cn
   \be
   H = \frac{p^2}{2m}+V(x)
   \ee
-  其中$V(x)$为周期势。在第二章，我们用微扰理论计算了能带的分裂，即取两个本征态为$|k\rangle,\,|-k\rangle$做简并围绕，即计算矩阵元
+  其中$V(x)$为周期势。在第二章，我们用微扰理论计算了能带的分裂，即取两个本征态为$|k\rangle,\,|-k\rangle$做简并微扰，即计算矩阵元
   \be
   \begin{pmatrix}
     \langle k|V|k\rangle & \langle -k|V|k\rangle\\
@@ -261,7 +266,7 @@ xuht9@mail2.sysu.edu.cn
 \end{frame}
 \begin{frame}\frametitle{\bch能带断裂后的色散曲线\ech}
   \bch
-  显然我们不太会求，但是我们可以在已经求好的$E_0$上做文章。现在重新来计算那个微扰矩阵元，不过取本征态为$|k=\frac{\pi}{a}+\delta\rangle,\,|k^{\prime}=-\frac{\pi}{a}+\delta\rangle$，这时我们仍然计算围绕矩阵的本征值，得到
+  显然我们不太会求，但是我们可以在已经求好的$E_0$上做文章。现在重新来计算那个微扰矩阵元，不过取本征态为$|k=\frac{\pi}{a}+\delta\rangle,\,|k^{\prime}=-\frac{\pi}{a}+\delta\rangle$，这时我们仍然计算微扰矩阵的本征值，得到
   \be
   (E_0(k)+V_0 -E)(E_0(k^{\prime})+V_0-E) - |V_n|^2 = 0
   \ee
@@ -283,7 +288,7 @@ xuht9@mail2.sysu.edu.cn
   \ee
   然后我们来计算恢复平衡态需要对电子做的功(假如每个原子贡献一个电子，只计算右半边)
   \be
-  U_{\rm electron} \simeq \frac{-Na}{\pi} \int_{-\Lambda}^0 \left(\nu q+ \sqrt{\nu^2q^2+\frac{\Delta^2}{4}}\right)
+  U_{\rm electron} \simeq \frac{-Na}{\pi} \int_{-\Lambda}^0 \left(\nu q+ \sqrt{\nu^2q^2+\frac{\Delta^2}{4}}\right)dq
   \ee
   其中$\Lambda$为一个频率截断，这个$\Lambda$不能太小，满足$\nu \Lambda \gg \Delta$
   \ech
@@ -314,7 +319,7 @@ xuht9@mail2.sysu.edu.cn
   \ee
   动量为$p_n(t) = m \dot{u}_n$
   \be
-  p_n(t) = P_0(t) + \sum_{l\ne 0}im\omega_l \left[\alpha_l e^{-i(\omega_lt - k_lna)} \right]
+  p_n(t) = P_0(t) + \sum_{l\ne 0}-im\omega_l \left[\alpha_l e^{-i(\omega_lt - k_lna)}-\alpha_l^{\dagger} e^{i(\omega_lt - k_lna)} \right]
   \ee
   简单起见，我们令$t=0$，反解出傅里叶变换的系数
   \bea
@@ -430,7 +435,7 @@ xuht9@mail2.sysu.edu.cn
   \bch
   可以将原来的$u_n(t)$连续化，定义位移场$u(x,t)$，则原来的方程变为
   \be
-  \rho \frac{\partial^2 u}{\partial^2 t} = -\lambda^{\prime}\frac{\partial^2 u}{\partial^2 x}
+  \rho \frac{\partial^2 u}{\partial t^2} = -\lambda^{\prime}\frac{\partial^2 u}{\partial x^2}
   \ee
   其中$\rho = m/a$，$\lambda^{\prime} = \lambda a$，则声速可以表述为$c_s^2 = \lambda^{\prime}/\rho$，上面的方程可以由下面的作用量变分得到
   \be
