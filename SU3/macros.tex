@@ -1,7 +1,13 @@
-\usepackage{CJKutf8}
+%\usepackage{CJKutf8}
 \usepackage{beamerthemesplit}
-\usetheme{Malmoe}
-\useoutertheme[footline=authortitle]{miniframes}
+\usetheme{Frankfurt}
+%\usecolortheme{breaver}
+%\usetheme{AnnArbor}
+%\usetheme{Dresden}
+%\usebeamercolor{beetle}
+\usepackage{xeCJK}
+\setCJKmainfont{AR PL KaitiM GB}
+%\useoutertheme[footline=authortitle]{miniframes}
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{float} 
@@ -17,6 +23,7 @@
 \usepackage{tcolorbox}
 \usepackage[T1]{fontenc}
 \graphicspath{{../figures/}}
+
 %%figures
 \def\lfig#1#2{\includegraphics[width=#1 in]{#2}}
 \def\addfig#1#2{\begin{center}\includegraphics[width=#1 in]{#2}\end{center}}
@@ -50,8 +57,8 @@
 \def\ee{\nonumber\end{equation}}
 \def\bea{\begin{eqnarray*}}
 \def\eea{\nonumber\end{eqnarray*}}
-\def\bch{\begin{CJK}{UTF8}{gbsn}}
-\def\ech{\end{CJK}}
+\def\bch{}
+\def\ech{}
 \def\bitem{\begin{itemize}}
 \def\eitem{\end{itemize}}
 \def\bcenter{\begin{center}}
@@ -177,3 +184,4 @@
 \def\SIK{\,\mathrm{K}}
 \def\SImmHg{\,\mathrm{mmHg}}
 \def\SIPa{\,\mathrm{Pa}}
+\def\secpage#1#2{\begin{frame}\bch\bcenter{\bf \Huge #1} \skipline \tbox{\bcenter #2\ecenter}\ecenter\ech\end{frame}}

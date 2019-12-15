@@ -37,8 +37,8 @@
 }
 
 \title{Group Theory\\ The Eightfold way of $SU(3)$}
-  \author{}
-  \date{}
+  \author{Haoting Xu}
+  \date{2019.11}
 
 
 \begin{document}
@@ -69,6 +69,7 @@ xuht9@mail2.sysu.edu.cn
 \end{frame}
 
 \section{Introduction}
+\secpage{Introduction}{吹水}
 \begin{frame}\frametitle{S.L Glashow's fortune}
   \bch
   While most of our colleagues were put off by the unfamiliar
@@ -87,7 +88,7 @@ group theory.)
   \cpic{0.3}{az}
   \ech
 \end{frame}
-\begin{frame}\frametitle{\bch粒子物理中的$SU(3)$\ech}
+\begin{frame}\frametitle{\bch 粒子物理中的$SU(3)$\ech}
   \bch
   我们已经见过了$SU(2)$的威力，它贯穿整个量子力学，它也在经典物理中出现。$SU(3)$只在粒子物理中出现，而且出现了两次
   \begin{itemize}
@@ -98,7 +99,8 @@ group theory.)
 \end{frame}
 
 \section{Tensors}
-\begin{frame}\frametitle{\bch张量方法构造表示\ech}
+\secpage{使用张量方法构造表示}{$D(m,n)=\frac{1}{2}(m+1)(n+1)(m+n+2)$}
+\begin{frame}\frametitle{\bch 张量方法构造表示\ech}
   \bch
   我们还是用张量的方法构造表示，回忆$SU(N)$群中要区分上下标，比如对于$SU(2)$群，有
   \be
@@ -117,7 +119,7 @@ group theory.)
   \end{itemize}
   \ech
 \end{frame}
-\begin{frame}\frametitle{\bch小练习\ech}
+\begin{frame}\frametitle{小练习}
   \bch
   试构造$T^{ij}_{kl}$的无迹对称部分
   \be
@@ -159,7 +161,7 @@ group theory.)
   在$SU(2)$中，我们将两个张量乘起来得到一堆张量，这在代数中其实对应于角动量的加法。那么相应的，我们也来研究$SU(3)$的加法，以后我们会看到和$\su(3)$代数的联系。我们先算几个简单的例子。
   \ech
 \end{frame}
-\begin{frame}\frametitle{\bch一些记号\ech}
+\begin{frame}\frametitle{ 一些记号}
   \bch
   也可以用维数来表示张量。但是，$(1,0)$型张量和$(0,1)$型张量都贡献三维表示由于上下标不等价，所以应该做区分，前者记为$3$，后者记为$3^{*}$。同理，$(3,0)$型(无迹对称)张量得到的表示记作$10$，$(0,3)$型张量得到的表示记作$10^{*}$，以此类推。
   \ech
@@ -201,7 +203,7 @@ group theory.)
   \ee
   \ech
 \end{frame}
-\begin{frame}\frametitle{\bch例4:$3\otimes 3\otimes 3$\ech}
+\begin{frame}\frametitle{例4:$3\otimes 3\otimes 3$\ech}
   \bch
   利用上面三个例子得到的关系，得到
   \bea
@@ -211,7 +213,7 @@ group theory.)
   \eea
   \ech
 \end{frame}
-\begin{frame}\frametitle{\bch例5:$8\otimes 8$\ech}
+\begin{frame}\frametitle{例5:$8\otimes 8$\ech}
   \bch
   大家自己做个练习
   \be
@@ -220,7 +222,7 @@ group theory.)
   \ech
 \end{frame}  
 
-\begin{frame}\frametitle{\bch一般情况\ech}
+\begin{frame}\frametitle{\bch 一般情况\ech}
   \bch
   有了上面的例子，我们现在可以来讨论一般情况，考虑$(m,n)\otimes (m^\prime,n^\prime)=(m,n;m^\prime,n^\prime)$，由于$(m,n)$和$(m^\prime,n^\prime)$已经是无迹对称的，所以抽取迹的操作应该对于不同张量的部分。例如，只能缩并$m$个上标中的一个指标和$n^\prime$下标中的一个。所以得到
   \bea
@@ -249,6 +251,7 @@ group theory.)
   \ech
 \end{frame}
 \section{Particle Physics}
+\secpage{$SU(3)$与粒子物理}{$SU(3)$基础表示是夸克}
 \begin{frame}\frametitle{\bch 粒子物理的实验发现\ech}
   \bch
   在1950-1960，发现了一系列粒子。
@@ -361,6 +364,7 @@ group theory.)
   \ech
 \end{frame}
 \section{Decomposition}
+\secpage{从$SU(3)$回到$SU(2)$}{$3\rightarrow 2_1 \oplus 1_{-2}$}
 \begin{frame}\frametitle{\bch 从$SU(3)$回到$SU(2)$\ech}
   \bch
   我们现在试图从$SU(3)$回到海森堡的$SU(2)$同位旋理论。考虑$(1,0)$型张量$\psi^i$,很自然地拆分成$\psi^i=\{\psi^a,\psi^3\}$，其中$a$从1取到2。
@@ -373,7 +377,7 @@ group theory.)
   \ech
 \end{frame}
 
-\begin{frame}\frametitle{\bch更细致的拆分\ech}
+\begin{frame}\frametitle{更细致的拆分\ech}
   \bch
   刚刚我们拆分的方法简单粗暴，如果考虑的更多一点，得到$SU(3)$最大的子群:$SU(3)\rightarrow SU(2)\oplus U(1)$，这里$U(1)$中的元素是$e^{i\theta Y}$，其中
   \be
@@ -443,12 +447,12 @@ group theory.)
   其中的bar表示那是个无迹张量。
   \ech
 \end{frame}
-\begin{frame}\frametitle{\bch电荷\ech}
+\begin{frame}\frametitle{\bch 电荷\ech}
   \bch
   在上一节中，我们曾经启发性的推导了$Q = I + \frac{1}{2}Y$，我们曾经说，$Y$是在$SU(2)$之外的一个算符，当时我们对于$Y$的值无能为力。但是现在，可以看到，对于doublets,$Y=1$，所以电荷为$Q = (1,0)$，对于triplet，电荷为$Q = (1,0,-1)$。但是如果将这个规则运用到夸克上，就出现了奇妙的事情，因为$3\rightarrow 2_1\oplus 1_2$，那么得到$Q = (\frac{2}{3},-\frac{1}{3})$。可见夸克具有分数的电荷，在早期寻找夸克的努力中，就是冲着分数电荷去的。
   \ech
 \end{frame}
-\begin{frame}\frametitle{\bch未完待续\ech}
+\begin{frame}\frametitle{\bch 未完待续\ech}
   \bch
   我们对于$SU(3)$和粒子物理还有很多的话要讲，但是在那之前，我们需要仔细学习$SU(3)$代数。所以我们今天的故事就到这里结束了。
   \cpic{0.2}{continue}

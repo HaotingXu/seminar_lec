@@ -1,4 +1,0 @@
-\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
-\beamer@sectionintoc {2}{Tensors}{5}{0}{2}
-\beamer@sectionintoc {3}{Particle Physics}{20}{0}{3}
-\beamer@sectionintoc {4}{Decomposition}{31}{0}{4}

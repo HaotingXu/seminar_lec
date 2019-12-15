@@ -1,6 +1,6 @@
 FILENAME=talk
 paper: $(FILENAME).tex
-	pdflatex $(FILENAME).tex
-	pdflatex $(FILENAME).tex
+	xelatex $(FILENAME).tex
+	xelatex $(FILENAME).tex
 clean:
-	rm -f *.out $(FILENAME).bib *.bbl *.log *.blg  *.aux 
+	rm -f *.out $(FILENAME).bib *.bbl *.log *.blg  *.aux *.nav *.snm *.toc 
