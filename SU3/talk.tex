@@ -38,7 +38,7 @@
 
 \title{Group Theory\\ The Eightfold way of $SU(3)$}
   \author{Haoting Xu}
-  \date{2019.11}
+  \date{December 19, 2019}
 
 
 \begin{document}
@@ -158,7 +158,7 @@ group theory.)
 \end{frame}
 \begin{frame}\frametitle{\bch 将张量相乘\ech}
   \bch
-  在$SU(2)$中，我们将两个张量乘起来得到一堆张量，这在代数中其实对应于角动量的加法。那么相应的，我们也来研究$SU(3)$的加法，以后我们会看到和$\su(3)$代数的联系。我们先算几个简单的例子。
+  在$SU(2)$中，我们将两个张量乘起来得到一堆张量，这在代数中其实对应于角动量的加法。那么相应的，我们也来研究$SU(3)$的张量乘法，以后我们会看到和$\su(3)$代数的联系。我们先算几个简单的例子。
   \ech
 \end{frame}
 \begin{frame}\frametitle{ 一些记号}
@@ -262,12 +262,7 @@ group theory.)
   \end{itemize}
   \ech
 \end{frame}
-\begin{frame}\frametitle{The Particle Zoo}
-  \bch
-  感觉很乱?那就对了。
-  \cpicn{0.25}{zoo}{The Particle Zoo}
-  \ech
-\end{frame}
+
 
 \begin{frame}\frametitle{\bch $7$?\ech}
   \bch
@@ -363,6 +358,216 @@ group theory.)
   所以重子是三个夸克的束缚态。例如，质子为uud，中子为udd，等等。同理，这个$10$种baryon resonance 也应该是三个夸克束缚在一起，我们惊奇的发现，$\Omega^-$是sss构成的。
   \ech
 \end{frame}
+\section{$\su (3)$ Algebra}
+\secpage{$\su(3)$ Algebra}{I scream, you scream, we all scream for icecream!}
+\begin{frame}\frametitle{$\su(2)$代数简要回顾}
+  回顾一下我们如何建立的$\su(2)$代数，我们先有三个生成元的对易关系
+  \be
+     [J_i,J_j] =i\epsilon_{ijk} J_k
+  \ee
+  其中一种取法是$J_i = \frac{\sigma_i}{2}$。之后我们定义了升降算符$J_{\pm}$，之后三个对易关系变为了$J_{\pm}$和$J_3$的对易关系。之后我们利用这个对易关系，并选择$J_3$的本征态$|m\rangle$为基底，发现$J_\pm$的作用是升降算符，之后假设有
+  \be
+  J_+|m\rangle =c_{m+1}|m+1\rangle,\, J_-|m\rangle = c^{*}_m |m-1\rangle
+  \ee
+  我们让爬梯子的过程终止于$|j\rangle$，并利用$\langle j|J_-J_+|j\rangle =0$和对易关系获得$c_j$，最终再次利用对易关系得到一个递推公式，最终得到
+  \be
+  J_{\pm}|m\rangle = \sqrt{j(j+1)-m(m\pm 1)} |m\pm 1\rangle
+  \ee
+  另外，从上式可以得到梯子是对称的。
+\end{frame}
+
+\begin{frame}\frametitle{$\su(3)$生成元}
+  回忆$\su(3)$生成元是无迹厄米矩阵的集合，经过一定的线性组合之后得到八个盖尔曼矩阵，他们按$\mathrm{tr}\lambda_a\lambda_b = 2\delta_{ab}$归一化。
+  \be
+  \lambda_1 =
+  \begin{pmatrix} 0&1&0 \\ 1&0&0 \\ 0&0&0\\
+  \end{pmatrix}
+  ,\, \lambda_2 =
+  \begin{pmatrix} 0&-i&0 \\ i&0&0 \\ 0&0&0\\
+  \end{pmatrix}
+  \ee
+  \be
+  \lambda_4 =
+  \begin{pmatrix} 0&0&1 \\ 0&0&0 \\ 1&0&0\\
+  \end{pmatrix}
+  ,\, \lambda_5 =
+  \begin{pmatrix} 0&0&-i \\ 0&0&0 \\ i&0&0\\
+  \end{pmatrix}
+  \ee
+  \be
+  \lambda_6 =
+  \begin{pmatrix} 0&0&0 \\ 0&0&1 \\ 0&1&0\\
+  \end{pmatrix}
+  ,\, \lambda_7 =
+  \begin{pmatrix} 0&0&0 \\ 0&0&-i \\ 0&i&0\\
+  \end{pmatrix}
+  \ee
+  \be
+  \lambda_3 =
+  \begin{pmatrix} 1&0&0 \\ 0&-1&0 \\ 0&0&0\\
+  \end{pmatrix}
+  ,\, \lambda_8 =\frac{1}{\sqrt{3}}
+  \begin{pmatrix} 1&0&0 \\ 0&1&0 \\ 0&0&-2\\
+  \end{pmatrix}
+  \ee
+\end{frame}
+\begin{frame}\frametitle{盖尔曼矩阵}
+  仔细观察盖尔曼矩阵，我们发现
+  \begin{itemize}
+  \item $\lambda_1,\lambda_2$就是泡利矩阵$\sigma_1,\sigma_2$多了一行和一列0。
+  \item $\lambda_4,\lambda_5$是所谓$1-3$泡利矩阵。
+  \item $\lambda_6,\lambda_6$是所谓$2-3$泡利矩阵。
+  \item $\lambda_3,\lambda_8$是两个对角矩阵，任何无迹厄米对角矩阵都可以写成$\lambda_3,\lambda_8$的线性组合。
+  \end{itemize}
+  因为$\lambda_4,\lambda_5$是$1-3$泡利矩阵，所以我们尝试计算
+  \be
+     [\lambda_4,\lambda_5] = 2i
+     \begin{pmatrix}  1&0&0 \\ 0&0&0 \\ 0&0&-1\\
+     \end{pmatrix}
+     =i(\lambda_3+\sqrt{3}\lambda_8)
+  \ee
+  由此可见，$\su(3)$代数大致是三个互相重叠的$\su(2)$代数，有两个$\su(2)$代数共用一个$J_z$
+\end{frame}
+\begin{frame}\frametitle{对易关系与结构常数}
+  习惯上，定义$T^a = \frac{1}{2}\lambda^a$，故有
+  \be
+     [T^a,T^b] = if^{abc}T^c
+  \ee
+  通过对盖尔曼矩阵直接的计算，得到
+  \bea
+  f^{123}&=&1\\
+  f^{147}&=&-f^{156}=f^{246}=f^{257}=f^{345}=-f^{367}=\frac{1}{2}\\
+  f^{458}&=&f^{678}=\frac{\sqrt{3}}{2}
+  \eea
+  在下一章(下学期)将会证明，李代数的$f^{abc}$一定是全反对称的。
+\end{frame}
+\begin{frame}\frametitle{标记本征态}
+  通过对结构常数的了解，我们发现$[T^3,T^8]=0$，因此他们可以具有相同的本征态。由于$T^3$大概就是泡利矩阵，我们直接把$\su(2)$的$|m\rangle$推广到这里来，定义$T^3$的本征值为$I_3$，物理上叫做同位旋的第三个分量。
+
+  而描述一个态还需要另外一个量，那就是$T^8$的本征值。由于历史原因，物理学家使用$Y = \frac{2}{\sqrt{3}}T^8$这个矩阵的本征值，这里的$Y$又被称作超电荷矩阵。于是一个态可以用这两个量表征为$|i_3,y\rangle$，它满足
+  \be
+  I_3|i_3,y\rangle = i_3|i_3,y\rangle,\, Y|i_3,y\rangle = y|i_3,y\rangle
+  \ee
+  我们把可同时对角化的生成元数目叫做李代数的秩(rank)。$\su(2)$的rank 为1。
+\end{frame}
+\begin{frame}\frametitle{升降算符}
+  这样有两个数来表征一个态，自然就想到定义一堆升降算符，让他们能在这些态里走来走去。和$\su(2)$不同的是，$\su(2)$是一维的爬梯子，$\su(3)$是在二维的操场上跳远。我们仿照$\su(2)$中升降算符的定义，随缘定义
+  \bea
+  I_\pm &=&T_1 \pm iT_2\\
+  U_\pm &=&T_6\pm iT_7 \\
+  V_\pm &=&T_4 \pm iT_5\\
+  I_3 &=&T_3\\
+  Y &=& \frac{2}{\sqrt{3}}T_8
+  \eea
+\end{frame}
+
+\begin{frame}\frametitle{Icecream is for you!}
+  不知道是谁规定的这三个符号，粒子物理学家把他们成为“I spin, U spin, V spin!”
+  \cpic{0.3}{icecream}
+\end{frame}
+
+\begin{frame}\frametitle{对易关系}
+  有了升降算符，接下来就是将原来的对易关系转换为新的八个算符之间的对易关系。
+  \begin{table}
+    \centering
+    \begin{tabular}{|c|c|c|}
+      \hline
+      $\left[I_3,I_\pm\right] = \pm I_\pm$ & $[I_3,U_{\pm}]=\mp\frac{1}{2}U_\pm$ &$ [I_3,V_\pm]=\pm\frac{1}{2}V_\pm$\\
+      \hline
+      $\left[ Y,I_\pm\right] = 0$ &$ [ Y,U_{\pm}]=\pm U_\pm$ & $[ Y,V_\pm]=\pm V_\pm$\\
+      \hline
+      $\left[I_+,I_-\right] = 2I_3 $& $[U_+,U_-] = 2U_3$ & $[V_+,V_-] = 2V_3$\\
+      \hline
+      $\left[I_{+},V_{-}\right] = -U_{-}$ & $[I_{+},U_{-}] =V_+$ & $[U_{+},V_{-}] = I_{-}$\\
+      \hline
+      $\left[I_+,V_+\right] = 0$ &$ [I_+,V_-] = 0$ & $[V_+,V_-] = 0$\\
+      \hline
+    \end{tabular}
+  \end{table}
+  
+  其他的对易关系都可以由上面的公式得到。
+\end{frame}
+\begin{frame}\frametitle{Climbing around on a jungle gym}
+  有了对易关系，我们可以说明这些算符作用在态上使得$i_3,y$的值改变。由于$\su(2)$的经验，我们不用算就知道
+  \be
+  I_\pm |i_3,y\rangle \sim |i_3\pm 1,y\rangle
+  \ee
+  我们再来看看，$U_\pm, V_\pm$将会给$|i_3,y\rangle$带来怎样的改变。
+  \be
+  I_3 U_\pm |i_3,y\rangle = \left(U_\pm I_3 \mp \frac{1}{2}U_\pm\right)|i_3\pm 1,y\rangle = \left(i_3\mp \frac{1}{2}\right) U_\pm |i_3,y\rangle
+  \ee
+  同理，有
+  \be
+  Y U_\pm |i_3,y\rangle = (y\pm 1) U_\pm |i_3,y\rangle
+  \ee
+  因此
+  \be
+  U_\pm |i_3,y\rangle \sim |i_3\mp \frac{1}{2},y\pm 1\rangle ,\,V_\pm |i_3,y\rangle \sim |i_3\pm \frac{1}{2},y\pm \frac{1}{2}\rangle
+  \ee
+\end{frame}
+\begin{frame}\frametitle{Root Vectors}
+  我们想象我们在$(i_3,y)$的平面，每一个升降算符都对应于这个平面上的一个矢量$(\Delta i_3, \Delta y)$
+  \begin{table}
+    \centering
+    \begin{tabular}{|c|c|}
+    \hline
+    $I_{\pm}$ & $(\pm 1,0)$\\
+    $U_\pm$ & $(\mp \frac{1}{2},\pm 1)$\\
+    $V_\pm$ & $(\pm\frac{1}{2},\pm 1)$\\
+    \hline
+    \end{tabular}
+  \end{table}
+  我们都学过平面几何，这几个向量看的十分别扭，这是为什么呢？
+\end{frame}
+\begin{frame}\frametitle{Root Vectors}
+  这是因为我们的$y,i_3$不是以相同的规则归一化的。在盖尔曼矩阵那里我们取了相同的归一化标准，之后我们为了历史原因，取了$T^8 = \frac{\sqrt{3}}{2}Y$，如果现在以$T^8$的本征值$i^8$作为操场上的坐标，则升降算符在操场上对应的向量为
+  \be
+  \vec{I}_{\pm} = (\pm 1,0),\,\,\, \vec{U}_\pm =\left(\mp \frac{1}{2},\pm \frac{\sqrt{3}}{2}\right),\,\,\, \vec{V}_\pm = \left( \pm \frac{1}{2},\pm\frac{\sqrt{3}}{2}\right)
+  \ee
+  画出来如下图所示，下图又被称作根图(root diagram)
+  \cpicn{0.23}{root}{Root Diagram}
+\end{frame}
+\begin{frame}\frametitle{从根图中读出对易关系}
+  \cpic{0.3}{root}
+  从根图中我们可以读出对易关系。仔细观察对易关系，两个根的对易子是另外一个根。一般来说，对易关系不为0是因为两次移动产生的系数不同。但是如果有一个对易关系移动之后的方向不是原点到这个点的任何方向。那么对易关系显然应该为0。
+\end{frame}
+\begin{frame}\frametitle{有关根向量的一些定理}
+  凭着我们的感觉，我们感觉到
+  \begin{itemize}
+  \item 所有的根向量有相同的长度。
+  \item 根向量之间的夹角非常好。
+  \item 根向量的和有可能是根向量，也有可能不是。
+  \item 如果$\vec{\alpha}$是一个根向量，它的一些倍数，比如$\vec{2\alpha}$，不是根向量。
+  \end{itemize}
+  这实际上是一般李代数的定理，下学期我们可能来证明这些。从根图中你还可以感觉到，三组根向量是平权的，你可以任取一个轴为横轴。
+\end{frame}
+\begin{frame}\frametitle{Positive and Simple Roots}
+  \begin{dfn}[Positive Roots]
+    一个根是正的，如果它对应向量的第一个非零实数分量为正。
+  \end{dfn}
+  说一个根是不是正的，与它本征值选取顺序有关，我们取了$(i_3,i_8)$，但原则上，也可以反着取。如果像原来那样取，则正根为$\vec{V}_+,\,\vec{I}_+,\,\vec{U}_-$，且有$\vec{I}_+ = \vec{V}_+ + \vec{U}_-$，所以我们有下面的定义
+  \begin{dfn}[Simple roots]
+    给定一个$l$维空间正根的集合，一个子集被称作简单的，如果子集中的任何正根都可以写成简单根的非负系数线性组合。
+  \end{dfn}
+  可见，$\vec{V}_+,\vec{U}_-$是$\su(3)$的两个简单根。
+\end{frame}
+\begin{frame}\frametitle{Weight Diagram}
+  根$\su(2)$的梯子做类比，我们自然想把梯子画出来。在平面上，每一个态用$(i_3,i_8) =(i_3,\frac{\sqrt{3}}{2}y)$来表示。由于三个根向量是平权的，选取任意一个你正在走的轴为横轴，都是一个$\su(2)$代数，回忆起$\su(2)$代数的梯子是关于原点对称的，所以weight diagram需沿着三组根向量的三个方向关于原点对称。于是我们来构造夸克的根图
+  \cpic{0.2}{quark}
+\end{frame}
+\begin{frame}\frametitle{8和10的weight diagram}
+  \begin{figure}
+\includegraphics[scale=0.2]{eight}
+\includegraphics[scale=0.2]{ten}
+\end{figure}
+\end{frame}
+\begin{frame}\frametitle{Weight Diagram的定理}
+  \cpic{0.2}{weight}
+  可以证明，weight diagram不是这样的形状。假设$I_-|a\rangle =0,\,V_-|a\rangle = \beta |b\rangle,\,I_-|b\rangle = \gamma |c\rangle$，故有
+  \be
+  I_-V_-|a\rangle = \beta I_-|b\rangle = \beta\gamma |c\rangle = ([I_-,V_-]+V_-I_-)|a\rangle = 0
+  \ee
+\end{frame}
 \section{Decomposition}
 \secpage{从$SU(3)$回到$SU(2)$}{$3\rightarrow 2_1 \oplus 1_{-2}$}
 \begin{frame}\frametitle{\bch 从$SU(3)$回到$SU(2)$\ech}
@@ -454,7 +659,7 @@ group theory.)
 \end{frame}
 \begin{frame}\frametitle{\bch 未完待续\ech}
   \bch
-  我们对于$SU(3)$和粒子物理还有很多的话要讲，但是在那之前，我们需要仔细学习$SU(3)$代数。所以我们今天的故事就到这里结束了。
+  我们对于 roots 和 weights， 还有李代数还有很多话要讲。下学期讲。
   \cpic{0.2}{continue}
   \ech
 \end{frame}
