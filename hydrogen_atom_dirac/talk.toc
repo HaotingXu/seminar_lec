@@ -1,4 +1,0 @@
-\beamer@sectionintoc {1}{Runge-Lenz Vector}{2}{0}{1}
-\beamer@sectionintoc {2}{Raidal Equation}{12}{0}{2}
-\beamer@sectionintoc {3}{Energy}{20}{0}{3}
-\beamer@sectionintoc {4}{Expasion}{25}{0}{4}
