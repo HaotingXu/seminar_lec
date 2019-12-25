@@ -1,5 +1,6 @@
-\documentclass[CJK]{beamer}
+\documentclass[aspectratio=1610,12pt,matheuler]{beamer}
 \input{macros.tex}
+\batchmode
 \newcommand{\field}{\mathscr{F}}
 \newcommand{\reals}{\mathbb{R}}
 \newcommand{\complexs}{\mathbb{C}}
@@ -84,7 +85,7 @@
 \end{frame}
 \begin{frame}\frametitle{对易关系的证明}
   \bea
-      [K,H] &=& [\gamma^0\Sigma_i \epsilon_{ijk}x_jP_k,\alpha_m P_m +\gamma^0 m]\\
+      [K,H] &=& [\gamma^0\Sigma_i \epsilon_{ijk}x_jP_k+\gamma^0,\alpha_m P_m +\gamma^0 m]\\
       &=& [\gamma^0 \Sigma_i\epsilon_{ijk}x_jP_k,\alpha_mP_m] + P_m [\gamma^0,\alpha_m]
   \eea
   计算第一项
