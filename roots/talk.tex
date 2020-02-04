@@ -187,10 +187,8 @@ For fun, you could work out $SU(5)$ and see whether the pattern persists.
 \end{problem}
 注：我们这本书的最终章将学习，$SU(5)$是大统一理论(grand unified theory)的对称群。
 \end{frame}
-\section{Roots and Weights for Orthogonal, Unitary,
-and Symplectic Algebras}
-\secpage{Roots and Weights for Orthogonal, Unitary,
-and Symplectic Algebras}{$SO(N)$群、$SU(N)$群和$Sp(2l)$的weights and roots}
+\section{Roots and Weights for Orthogonal Unitary and Symplectic Algebras}
+\secpage{Roots and Weights for Orthogonal, Unitary and Symplectic Algebras}{$H^1 = \diag(1,-1,0,0,\cdots,0,0)$}
 \begin{frame}\frametitle{概念复习}
   \begin{dfn}[Positive Roots]
     一个根是正的，如果它对应向量的第一个非零实数分量为正。
@@ -378,14 +376,109 @@ e^n+e^l &=& (e^n-e^{n+1})+(e^{n+1}-e^{n+2})+\cdots+(e^{l-1}-e^{l})
 \ee
 
 下一步，检查生成元个数为$2l(2l+1)/2$。最后，得到正根为
-\be
-e^i\pm e^j,\,e^i
-\ee
-简单根为
+$e^i\pm e^j,\,e^i$
+，简单根为
 \be
 e^{i-1}-e^i,\, e^l
 \ee
 尝试证明简单根是简单根。
+\cpic{0.5}{nimashinima}
 \end{frame}
+\begin{frame}\frametitle{$SU(N)$群的根}
+$SU(N)$群可同时对角化的生成元为
+\bea
+H^1 &=&\diag(1,-1,0,\cdots,0)/\sqrt{2}\\
+H^2 &=& \diag(1,1,-2,\cdots,0)/\sqrt{6}\\
+&\vdots & \\
+H^i &=& \diag(\underbrace{1,1,\cdots,1}_{i},-i,0,\cdots,0)/\sqrt{i(i+1)}\\
+H^l &=& \diag(0,0,0,0,\cdots,1,-1)/\sqrt{l(l+1)}
+\eea
+$SU(N)$的根向量生活在$l=N-1$维空间。可以读出$w^j$的第$i$个分量是$\left(H^i\right)_jj$。
+\end{frame}
+\begin{frame}\frametitle{根向量}
+$SU(N)$群的根向量为$w^m-w^n$，其中$m,n=1,\cdots,N$。正根可以表示为
+$w^m-w^n$，其中$m<n$。简单根有$N-1$个，为
+\be
+w^m - w^{m+1} \text{ for }m=1,2,\cdots,N-1
+\ee
+\end{frame}
+\begin{frame}\frametitle{从线段到等边三角形到正四面体}
+\cpic{0.3}{think2}
+试着推导出$SU(4)$的根图，并发现它是一个正四面体。试着写出$SU(4)$的三个简单根，定义为
+\bea
+\alpha^1 &\equiv& w^1-w^2\\
+\alpha^2 &\equiv& w^2-w^3\\
+\alpha^3 &\equiv& w^3-w^4
+\eea
+并证明$\left(\alpha^1\right)^2=\left(\alpha^2\right)^2=\left(\alpha^3\right)^2=2$且$\alpha^1\cdot \alpha^2 = -1,\,\,\alpha^2\cdot \alpha^3 = -1$。$\alpha^1\cdot \alpha^3=0$，因为正四面体的两条边是垂直的。
+\end{frame}
+\begin{frame}\frametitle{另一个优美的表示方法}
+我们发现到目前为止，$SU(N)$群的根向量都满足
+\be
+\left(\alpha^i\right)^2=2,\,\, \alpha^{i}\cdot \alpha{i+1}=-1
+\ee
+其中$i=1,\cdots,l-1$。考虑$(l+1)$维空间中的基底$e^i$，我们发现
+\be
+(e^i - e^{i+1})^2=1+1=2,\,\, (e^i-e^{i+1})\cdot (e^j - e^{j+1})=\left\{
+\begin{aligned}
+-1&,&\,j=i\pm 1\\
+0&,&\, \text{otherwise}
+\end{aligned}
+\right.
+\ee
+所以$l$个$SU(l+1)$的简单根为
+\be
+\alpha^i\equiv e^i - e^{i+1},\, i=1,\cdots , l
+\ee
+\end{frame}
+\begin{frame}\frametitle{辛群复习}
+辛群就是在辛流形上保内积不变的变换的集合。辛群满足$R^TJR=J$。幺正辛群的生成元为
+\be
+H = \begin{pmatrix} iA+S_3 & S_1-iS_2 \\ S_1+iS_2 & iA-S_3 \end{pmatrix}= iA\otimes I +iS_i\otimes \sigma_i
+\ee
+小朋友快来猜一猜，上面哪个是已经同时对角化了的生成元？
+\cpic{0.3}{why}
+\end{frame}
+\begin{frame}\frametitle{}
+对角化的生成元为
+\be
+H^i = u^i\otimes \sigma_3 = \begin{pmatrix} u^i & 0 \\ 0 &-u^i \end{pmatrix}
+\ee
+\cpic{0.3}{think4}
+对于$Sp(4)$的情况，得到根图。注意这与$SO(2l)$的情况不同，可以有沟通$w^1,w^3$的根。
+\end{frame}
+\begin{frame}\frametitle{Positive roots and Simple roots}
+得到的根图如图
+\cpicn{0.3}{Sp4}{$Sp(4)$的根图}
+注意到如果将此图旋转$45^\circ$，就会得到$SO(5)$的根图，这暗示了
+\be
+Sp(4)\simeq SO(5)
+\ee
+\end{frame}
+\begin{frame}\frametitle{Positive roots and Simple roots}
+对于$Sp(2l)$群，我们得到它的根为
+\be
+\pm e^i \pm e^j,\,\, \pm 2e^i ,\,\, i,j=1,\cdots,l
+\ee
+positive roots
+\be
+e^i\pm e^j,\,\, 2e^i
+\ee
+simple roots
+\be
+e^{i-1}-e^i ,\,\, i=2,\cdots,l \text{ and } 2e^l
+\ee
+最后，证实$Sp(2l)$有$l^2$个正根，$l(2l+1)$个生成元。
+\end{frame}
+\section{summary}
+\begin{frame}\frametitle{总结}
+最后，我们将这节课学的根都列在下面的表中。
+\begin{table}
+  \begin{center}
+  \includegraphics[scale=0.3]{table}
+  \end{center}
+  \caption{The four families we have studied.}
+\end{table}
 
+\end{frame}
 \end{document}
