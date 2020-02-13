@@ -59,15 +59,6 @@ xuht9@mail2.sysu.edu.cn
 \end{frame}
 \section{Introduction and Review}
 \secpage{Introduction and Review}{吹水和复习}
-\begin{frame}\frametitle{Back to School}
-欢迎大家平安回来！这学期我们继续开始奇妙的群论之旅。这学期我们将学习
-\begin{itemize}
-  \item 一般群的李代数　
-  \item 洛伦兹群和旋量
-  \item 膨胀的宇宙和共形代数
-  \item 规范对称性
-\end{itemize}
-\end{frame}
 
 \begin{frame}\frametitle{Introduction}
 这一章我们来学习如何处理一般的李代数。在那之前我们需要看一些具体的例子找找感觉。这一讲全在算具体的例子找感觉，所以特别水。
@@ -123,7 +114,7 @@ $SU(2)$的生成元是三个泡利矩阵$\frac12\sigma_i$，对角化$\sigma_3 =
   \item $\lambda_6,\lambda_7$是所谓$2-3$泡利矩阵。
   \item $\lambda_3,\lambda_8$是两个对角矩阵，任何无迹厄米对角矩阵都可以写成$\lambda_3,\lambda_8$的线性组合。一个代数中可同时对角化的生成元数目被成为代数的rank，用$l$表示。
   \end{itemize}
-  因此$SU(3)$有两个可以对角化的生成元，我们说$SU(3)$的秩是２。引入记号$\frac{1}{2}\lambda_{1+i2},\frac{1}{2}\lambda_{4+i5},\frac12\lambda_{6+i7}$，通过计算与$\frac12\lambda_3$和$\frac12\lambda_8$的对易关系，我们便可以得到根向量。  
+  因此$SU(3)$有两个可以对角化的生成元，我们说$SU(3)$的秩是$2$。引入记号$\frac{1}{2}\lambda_{1+i2},\frac{1}{2}\lambda_{4+i5},\frac12\lambda_{6+i7}$，通过计算与$\frac12\lambda_3$和$\frac12\lambda_8$的对易关系，我们便可以得到根向量。  
 \end{frame}
 \begin{frame}\frametitle{得到$SU(3)$的根向量}
 因为这些生成元其实都是$x,y$泡利矩阵，所以在计算根向量的时候我们不必要每次计算$3\times 3$的乘法。而只用计算$2\times 2$矩阵的乘法就可以了。
@@ -205,7 +196,7 @@ For fun, you could work out $SU(5)$ and see whether the pattern persists.
   \item 直接从$H^i$中读出weights。
   \item 从weight diagram中读出根。
   \item 选定一种方向的顺序，从根中读出正根。
-  \item 从正根中选出简单跟。
+  \item 从正根中选出简单根。
 \end{enumerate}
 \end{frame}
 \begin{frame}\frametitle{一个简单的例子——$SU(3)$}
@@ -241,12 +232,13 @@ w^m-w^n\,\,\mathrm{for\,\,all\,\,  } m<n
 现在我们有足够的储备来研究$SO(N)$群了，我们一会就会发现，奇数的情况和偶数的情况要单独讨论。
 \end{frame}
 \begin{frame}\frametitle{第二个例子$SO(4)$}
-我们来研究$SO(4)$的根图。首先，我们回忆$SO(N)$群的生成元是$J = i\mathcal{J}$，其中$\mathcal{J}$是一个反对称矩阵。如果盯着两个坐标，又反对称又厄米，对角元还是$0$，这两个坐标的矩阵一定是泡利矩阵$\sigma_1,\sigma_2$，对角化之后就是$\sigma_3$。所以对于$SO(4)$群，可同时对角化的两个生成元的一种选择是
+我们来研究$SO(4)$的根图。首先，我们回忆$SO(N)$群的生成元是$J = -i\mathcal{J}$，其中$\mathcal{J}$是一个反对称矩阵。对于$SO(4)$群，可同时对角化的两个生成元的一种选择是
 \bea
 H^1 &=& \diag(1,-1,0,0)\\
 H^2 &=& \diag(0,0,1,-1)
 \eea
-这时矩阵的基础表示,如$R\simeq e^{i\theta H^1}$。这相当于对$(x_1\pm i x_2,x_3\pm ix_4)$进行操作。然后我们读出weights
+这是因为他们分别旋转$1-2$平面和$3-4$平面，没有第三个生成元和他们同时对易。
+这相当于对$(x_1\pm i x_2,x_3\pm ix_4)$进行操作。然后我们读出weights
 \be
 w^1 = (1,0),\,\,\, w^2 = (-1,0),\,\,\,w^3 = (0,1),\,\,\,w^4=(0,-1)
 \ee
@@ -268,7 +260,7 @@ w^1 = (1,0),\,\,\, w^2 = (-1,0),\,\,\,w^3 = (0,1),\,\,\,w^4=(0,-1)
 \end{frame}
 \begin{frame}\frametitle{思考题解答}
 \cpic{0.3}{think}
-前面说过,如果同时对角化$H^1,H^2$,相当于对$(x_1+ix_2,x_3+ix_4)$进行旋转,而这种旋转是没法沟通第一个坐标和第二个坐标。
+前面说过,如果同时对角化$H^1,H^2$,相当于对$(x_1\pm ix_2,x_3\pm ix_4)$进行旋转,而这种旋转是没法沟通第一个坐标和第二个坐标。
 \end{frame}
 \begin{frame}\frametitle{45度的偏差}
 我们发现$w$的方向和$\alpha$的方向不太一致，而是偏差了45度，这意味着
@@ -365,9 +357,9 @@ e^m+e^n = (e^m-e^{m+1})+(e^{m+1}-e^{m+2})+\cdots+(e^{n-1}-e^n)+(e^n-e^l)+(e^n+e^
 再利用
 \bea
 e^n-e^l &=& (e^n-e^{n+1})+(e^{n+1}-e^{n+2})+\cdots+(e^{l-1}-e^l)\\
-e^n+e^l &=& (e^n-e^{n+1})+(e^{n+1}-e^{n+2})+\cdots+(e^{l-1}-e^{l})
+e^n+e^l &=& (e^n-e^{n+1})+(e^{n+1}-e^{n+2})+\cdots+(e^{l-1}+e^{l})
 \eea
-这样所有的正根就全写成简单跟的线性组合了。
+这样所有的正根就全写成简单根的线性组合了。
 \end{frame}
 \begin{frame}\frametitle{$SO(2l+1)$}
 对于$SO(2l+1)$重复同样的操作。得到多了一个根$w^{2l+1}=(0,0,\cdots,0)$,根可以表示为
@@ -393,7 +385,7 @@ H^2 &=& \diag(1,1,-2,\cdots,0)/\sqrt{6}\\
 H^i &=& \diag(\underbrace{1,1,\cdots,1}_{i},-i,0,\cdots,0)/\sqrt{i(i+1)}\\
 H^l &=& \diag(0,0,0,0,\cdots,1,-1)/\sqrt{l(l+1)}
 \eea
-$SU(N)$的根向量生活在$l=N-1$维空间。可以读出$w^j$的第$i$个分量是$\left(H^i\right)_jj$。
+$SU(N)$的根向量生活在$l=N-1$维空间。可以读出$w^j$的第$i$个分量是$\left(H^i\right)_{jj}$。
 \end{frame}
 \begin{frame}\frametitle{根向量}
 $SU(N)$群的根向量为$w^m-w^n$，其中$m,n=1,\cdots,N$。正根可以表示为
@@ -415,7 +407,7 @@ w^m - w^{m+1} \text{ for }m=1,2,\cdots,N-1
 \begin{frame}\frametitle{另一个优美的表示方法}
 我们发现到目前为止，$SU(N)$群的根向量都满足
 \be
-\left(\alpha^i\right)^2=2,\,\, \alpha^{i}\cdot \alpha{i+1}=-1
+\left(\alpha^i\right)^2=2,\,\, \alpha^{i}\cdot \alpha^{i+1}=-1
 \ee
 其中$i=1,\cdots,l-1$。考虑$(l+1)$维空间中的基底$e^i$，我们发现
 \be
