@@ -1,9 +1,0 @@
-\contentsline {section}{\numberline {1}$SU(N)$群复习}{1}{section.1}
-\contentsline {subsection}{\numberline {1.1}定义、张量方法构造表示}{1}{subsection.1.1}
-\contentsline {subsection}{\numberline {1.2}$SU(N)$代数}{2}{subsection.1.2}
-\contentsline {section}{\numberline {2}$SU(2)$和$SO(3)$局域同构}{2}{section.2}
-\contentsline {section}{\numberline {3}$SU(2)$的李代数}{4}{section.3}
-\contentsline {section}{\numberline {4}$SU(2)$的奇妙性质}{4}{section.4}
-\contentsline {subsection}{\numberline {4.1}只需考虑上标对称张量}{4}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}$SU(2)$ is pseudoreal}{5}{subsection.4.2}
-\contentsline {section}{\numberline {5}$SU(N)$和$U(N)$的关系}{5}{section.5}

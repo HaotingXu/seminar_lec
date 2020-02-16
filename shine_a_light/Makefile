@@ -1,6 +1,0 @@
-FILENAME=talk
-paper: $(FILENAME).tex
-	pdflatex $(FILENAME).tex
-	pdflatex $(FILENAME).tex
-clean:
-	rm -f *.out $(FILENAME).bib *.bbl *.log *.blg  *.aux 

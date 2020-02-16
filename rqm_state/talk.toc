@@ -1,4 +1,0 @@
-\beamer@sectionintoc {1}{Tensor Notation}{2}{0}{1}
-\beamer@sectionintoc {2}{Poincare group}{7}{0}{2}
-\beamer@sectionintoc {3}{States and Particles}{22}{0}{3}
-\beamer@sectionintoc {4}{Spin}{30}{0}{4}
