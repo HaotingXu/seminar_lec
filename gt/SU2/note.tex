@@ -1,0 +1,174 @@
+\documentclass[11pt,a4paper]{ctexart}
+\input{macros.tex}
+\graphicspath{{figure/}}
+\usepackage{enumerate}
+%\usepackage{fancyhdr}
+%\cpic{<尺寸>}{<文件名>}}用于生成居中的图片。
+\newcommand{\cpic}[2]{
+\begin{center}
+\includegraphics[scale=#1]{#2}
+\end{center}
+}
+%\cpicn{<尺寸>}{<文件名>}{<注释>}用于生成居中且带有注释的图片，其label为图片名。
+\newcommand{\cpicn}[3]
+{
+\begin{figure}[H]
+\cpic{#1}{#2}
+\caption{\color{red}#3\label{#2}}
+\end{figure}
+}
+
+\newtheorem{definition}{\hspace{2em} 定义}[section]
+\newtheorem{conclusion}{\hspace{2em} 重要结论}[section]
+\newtheorem{practice}{\hspace{2em} 小练习}[section]
+\title{$SU(2)$群的奇异特性}
+\author{徐昊霆}
+\begin{document}
+\maketitle
+\tableofcontents
+\section{$SU(N)$群复习}
+\subsection{定义、张量方法构造表示}
+\begin{definition}[$SU(N)$ 群]
+  同时满足$U^{\dagger}U = 1$且$\mathrm{det} U = 1$的群。
+\end{definition}
+回顾$SU(N)$群对矢量和张量的作用，对于矢量
+\beq
+\psi^i \rightarrow u^{ij}\psi^{j}
+\eeq
+对于具有$m$个指标的张量
+\beq
+\psi^{i_1\cdots i_m} \rightarrow U^{i_1j_1}\cdots U^{i_mj_m} \psi^{j_1\cdots j_m}
+\eeq
+一般来说只需要考虑对称张量和全反对称张量。于是，对于$SU(2)$群，张量$\psi^{i_1\cdots i_m}$有$m+1$个独立分量，因此对应的表示是$m+1$维表示。之后我们计算任何一个张量的迹，我们发现它不是像$SO(N)$群一样像一个张量一样独立变换。为了让迹独立变换，我们定义了上下指标，上下指标的变换为
+\bea
+\psi^{i} &\rightarrow & U^i_j \psi^j\\
+\psi_{i} &\rightarrow & \left(U^{\dagger}\right)^i_j \psi^j\\
+\eea
+于是可以知道一个张量究竟是怎样变换的。再利用$\mathrm{det}U =1$，我们得到
+\beq\label{invariant}
+\mathrm{det} U = \epsilon_{i_1i_2\cdots i_N} U^{i_1}_{j_1}\cdots U^{i_1}_{j_1} =\epsilon_{j_1j_2\cdots j_N}
+\eeq
+因此，在变换下，可以得到下面的等式\footnote{这里取一个特殊的例子，有$m$个指标的写起来过于繁杂}
+\beq
+\phi_{ik} = \epsilon_{ipq} \phi^{pq}_k
+\eeq
+利用式~\ref{invariant}可以验证，在$U$的变换下上面的等式确实成立。因此得到下面的重要结论
+\begin{conclusion}
+  在$SU(N)$群中，我们使用$\epsilon$符号升降张量的指标。
+\end{conclusion}
+\subsection{$SU(N)$代数}
+考虑无穷小变化
+\beq
+H = I + i\epsilon H
+\eeq
+并利用关系$U^{\dagger}U = I$，可以得到$H$是{\color{red} 无迹厄米矩阵}。$N$维无迹厄米矩阵有$(N-1)+N(N-1) = N^2-1$个分量。对于$SU(2)$群，无迹厄米矩阵的集合就是三个泡利矩阵。我们回忆$SO(N)$群的生成元有$\frac{1}{2}N(N-1)$个，于是我们惊奇的发现$2^2 -1 = \frac{1}{2} 3\times 2 =3$，暗示了$SU(2)$群和$SO(3)$群惊人的联系。
+\section{$SU(2)$和$SO(3)$局域同构}
+在这一节我们将看到，一个$SU(2)$中有两个$SO(3)$。我们想办法把三维空间的转动对应到$SU(2)$中的元素上去。我们把三维空间的矢量$\vec{x}$先映射到$SU(2)$的无迹厄米矩阵$X$上去，并令
+\beq
+X = x\sigma_1 + y\sigma_2 +z\sigma_3 =
+\begin{pmatrix}
+  z    & x-iy \\
+  x+iy & z  
+\end{pmatrix}
+\eeq
+一会我们就将看到，如果这样映射，就可以把两个群对应起来。我们注意到$X$的行列式为
+\beq
+\mathrm{det} X = -(x^2+y^2+z^2) = -\vec{x}^2
+\eeq
+现在我们做变换$X^{\prime} = U^{\dagger}XU$，我们会发现变换后的$X^{\prime}$仍然是一个无迹厄米矩阵，且它的行列式不变。先求迹
+\beq
+\mathrm{tr} X^\prime = \mathrm{tr} XUU^{\dagger} = \mathrm{tr}X = 0
+\eeq
+上面的推导需要用一点张量指标的小技巧。也很容易证明它的厄米性。现在，新的$X^{\prime}$又可以用一组新的系数来代表，它们是$(x^\prime,y^{\prime},z^\prime)$，我们计算矩阵$X^{\prime}$的行列式，我们会得到$\mathrm{det}X = \mathrm{det}X^\prime$，我们发现，这种变换也是保证模长不变的线性变换,根据定义，这正是一个三维空间的旋转。另外，映射$f:U\rightarrow R$也构成群。
+
+值得注意的是，映射$f:U\rightarrow R$是一个2对1的映射，因为$-U$也可以映射到同一个$R$上，因为$(-U)^{\dagger} X (-U)= U^\dagger XU$，在$SU(2)$群中，$U$和$-U$显然不可能是一个东西。所以，我们又有了重要结论
+\begin{conclusion}
+  $SU(2)$ covers $SO(3)$ twice.
+\end{conclusion}
+
+上面我们只是大概讨论了一下做那样的变化你可以把$SU(2)$映射到$SO(3)$,下面我们来直接计算一下。我们知道$SU(2)$的元素可以表示为
+\beq
+U = e^{i\varphi_a \sigma_a/2}
+\eeq
+我们定义$\vec{\varphi} = \varphi \hat{\varphi}$，利用
+\beq
+\left(\vec{\varphi}\cdot \vec{\sigma}\right)^2 = \varphi^2
+\eeq
+于是直接将群元直接展开，并将奇偶项拆开
+\beq
+\begin{aligned}
+  U &=& \sum_{n=0}^{\infty} \frac{i^n}{n!}\left(\frac{\vec{\varphi}\cdot \vec{\sigma}}{2}\right)^n \\
+  &=& \cos \frac{\varphi}{2} + i \hat{\varphi}\cdot \vec{\sigma} \sin\frac{\varphi}{2}
+\end{aligned}
+\eeq
+现在直接计算$U^\dagger X U$，并利用泡利矩阵的性质$\sigma_a\sigma_b = \delta_{ab}I+ i\epsilon_{abc}\sigma_c$，如果对于$z$轴的旋转，就会得到原来我们熟悉的变换。
+
+根据刚刚的计算，如果是绕$z$轴旋转，那么有$U(\varphi)=e^{i\varphi \sigma_3/2}$，如果我们考虑$2\pi$的旋转，我们得到
+\beq
+U(2\pi) = -I
+\eeq
+这里又反映了我们之前的重要结论，$SU(2)$中包含两个$SO(3)$，在下一节我们会对这个问题有更深刻的理解。
+\section{$SU(2)$的李代数}
+在之前我们讲过，$SU(2)$的李代数与$SO(3)$有同样的结构，他们满足对易关系
+\beq
+\left[T^i,T^j\right] = i\epsilon^{ijk} T^k
+\eeq
+于是同样的可以定义升降算符，满足$T^\pm = T^1\pm T^2$，于是对易关系变为
+\beq
+\left[T^3, T^\pm\right] = \pm T^{\pm},\spa \left[ T^+,T^-\right] = 2T^3
+\eeq
+于是选择$T^3$的本征态，我们又可以重复之前李代数的操作。我们将看到$SU(2)$的表示是$2j+1$维的，其中$j$既可以取整数又可以取半整数。我们其实已经可以看出为什么了，这是因为具有$m$个指标的张量贡献一个$m+1$维表示，直接令$m=2j$，就可以得到上面的半整数了。但是，这样说到目前为止还有一点不严谨，因为我们知道，对于一般$SU(N)$群，上标的张量和下标的张量是不一样的，那么下标会不会贡献其他的表示?
+\section{$SU(2)$的奇妙性质}
+\subsection{只需考虑上标对称张量}
+我们之前学习$SO(3)$的时候，我们知道了$SO(3)$的特殊性，即我们只需要考虑$n$维无迹对称张量就行了，其他的$SO(N)$群则没有这样的特性。
+
+根据刚刚的指标升降公式，我们可以把下标的全部都升上去，例如对张量$T^{pqijk} = \epsilon ^{pm}\epsilon^{qn} T_{mn}^{ijk}$。我们也只需要考虑对称的张量，因为如果有一个张量，比如说，4个指标的张量$T^{ijkl}$，总可以对两个指标$i,k$构造对称部分和反对称部分
+\bea
+S^{ijkl} &=& T^{ijkl} + T^{kjil} \\
+A^{ijkl} &=& T^{ijkl} - T^{kjil}
+\eea
+然后对于反对称张量，可以构造一个二阶的对称张量$\epsilon_{ik} A^{ijkl}$，所以高维的反对称张量总可以变成低维的张量，最后全变成一维的张量，而一维的张量没有反对称和对称这一说法。所以说，为了构造$SU(2)$群的不可约表示，我们只需要考虑上标的对称张量即可。这和其他的群是不同的。因此，我们就可以说对于$m$个指标的张量，我们只需要考虑对称张量就完了，所以得到$SU(2)$有$m+1$维的表示。
+\begin{conclusion}
+  $SU(2)$有$m+1$维的表示。
+\end{conclusion}
+\begin{practice}
+  试证明上面的论述对于$SU(3)$群不成立。
+\end{practice}
+所以，我们看到了之前李代数的半整数的来源了，是$SU(2)$群。
+
+\subsection{$SU(2)$ is pseudoreal}
+在上一讲我们提到，必须严格区分上下标，但是我们刚刚又讲过，不需要下标的东西。这不是矛盾吗?不需要下标到底是啥意思，它们不是差一个共轭吗?我们回想到我们在第二章学过一个群表示的real 和 pseudoreal，实际上，$SU(2)$是pseudoreal的。回顾一下定义
+\begin{definition}
+  一个群的表示是pseudoreal的，如果存在一个矩阵$S$，使得
+  \beq
+  D(g)^* = SDS^{-1}
+  \eeq
+\end{definition}
+可以验证，这个矩阵$S$可以是$\sigma_2$。
+\begin{practice}
+  验证矩阵$S$可以是$\sigma_2$
+\end{practice}
+\begin{conclusion}
+  $SU(2)$ is pseudoreal.
+\end{conclusion}
+
+\section{$SU(N)$和$U(N)$的关系}
+$U(N)$群有两种，第一种是$U(1)$群，它的形式为$e^{i\varphi}I$，第二种就是我们所说的$SU(N)$群，聪明的物理学家这时候路过，写下$U(N) = SU(N)\otimes U(1)$。
+
+但是这是错的。
+
+我们没有意识到，这两种是有交集的。考虑下面这些元素
+\be
+e^{i2\pi k/N} I, \,\spa k=1,\cdots,N
+\ee
+你惊奇的发现，这个矩阵的行列式为1，而且它还是$U(1)$群的元素。这些群是啥?$Z_N$群的元素！所以正确的写法为
+\begin{conclusion}
+\beq
+U(N) = \left(SU(N)/Z_N\right)\otimes U(1)
+\eeq
+\end{conclusion}
+上面的写法如果对于$N=2$，又一次暗示了$SU(2)$包含了两个$SO(3)$。我们回想起强力、弱力和电磁相互作用的对称群是$SU(3)\oplus SU(2)\oplus U(1)$，这个写法应该也不严谨。但是在物理中，整体的对称性没有出现，而只是李代数或者局域不变性出现在拉格朗日量中。
+
+%\bibliographystyle{siam}
+%\bibliography{cites}
+\end{document}
