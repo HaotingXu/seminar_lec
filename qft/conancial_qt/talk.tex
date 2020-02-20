@@ -1,4 +1,4 @@
-\documentclass[12pt]{beamer}
+\documentclass[11pt]{beamer}
 \input{macros.tex}
 \graphicspath{{figures/}}
 
@@ -76,8 +76,11 @@ xuht9@mail2.sysu.edu.cn
 \frac{d\hat{\op}_H(t)}{dt} = -i\left[\hat{\op}_H(t),\hat{H}\right] 
 \ee
 \end{frame}
+\begin{frame}\frametitle{海森堡绘景的好处}
+如果采用了海森堡绘景，算符不随时间变化。即算符是洛伦兹不变的。在我们讨论相对论的时候，这就good
+\end{frame}
 \begin{frame}\frametitle{单粒子量子力学的终结}
-我们现在要试图把单粒子量子力学和狭义相对论结合起来，即简单的设想$E_{\vec{p}} = \sqrt{\vec{p}^2+m^2}$，我们采取归一化$\langle \vec{x}|\vec{p}\rangle$。狭义相对论要求无法和具有类空距离的事件沟通，即要求两个态不能相互跃迁。因此我们来计算
+我们现在要试图把单粒子量子力学和狭义相对论结合起来，即简单的设想$E_{\vec{p}} = \sqrt{\vec{p}^2+m^2}$，我们采取归一化$\langle \vec{x}|\vec{p}\rangle$。狭义相对论要求无法和具有类空距离的事件沟通，即要求两个态不能相互跃迁。因此我们来计算(其中$t>|\vec{x}|=x$)
 \be
 \mathcal{A} = \langle \vec{x}| e^{-i\hat{H}t}|\vec{x}=0\rangle
 \ee
@@ -92,6 +95,391 @@ xuht9@mail2.sysu.edu.cn
 \be
 \mathcal{A} = \frac{-i}{(2\pi)^2 x} \int_{-\infty}^{\infty} dp p e^{ipx} e^{-it\sqrt{p^2+m^2}}
 \ee
+进行围到积分最终得到
+\be
+\mathcal{A} \simeq e^{-m|\vec{x}|}
+\ee
+因此我们可以看到，仍然是有概率跃迁到类空距离的点，这样会违背因果律。所以单粒子的量子力学体系想要和相对论统一起来是不可能的。
+\end{frame}
+\begin{frame}{量子场论对于因果律的要求}
+我们构建的量子场论不能破坏因果律，在量子场论中，我们把场看做算符，这意味着要求
+\be
+\left[\hat{\op}(x),\hat{\op}(y)\right] = 0 
+\ee
+如果$(x-y)^2<0$。
+\end{frame}
+\section{对称性与诺特定理}
+\secpage{对称性与诺特定理}{一种对称性意味着守恒流守恒}
+\begin{frame}\frametitle{对称性}
+\begin{dfn}[对称性]
+如果在一种无穷小变换$\delta \phi$下，拉氏密度$\lag$差某个函数的四维散度
+\be
+\delta \lag = \partial_\mu W^\mu
+\ee
+则称这样的变换是一种对称变换。
+\end{dfn}
+如果这样，我们有
+\be
+\delta \lag = \frac{\partial \lag}{\partial \phi}\delta \phi +  \frac{\partial \lag}{\partial (\partial_\mu \phi)} \delta (\partial_\mu \phi)
+\ee
+如果场还满足欧拉-拉格朗日方程，则有
+\be
+\partial_\mu \left(\frac{\partial \lag}{\partial(\partial_\mu \phi)}\delta \phi\right) = \partial_\mu W^\mu
+\ee
+\end{frame}
+\begin{frame}\frametitle{诺特定理}
+于是我们有
+\be
+\partial_\mu j^\mu =0 
+\ee
+其中守恒流为
+\be
+j^\mu = \frac{\partial \lag}{\partial(\partial_\mu \phi)}\delta \phi - W^\mu
+\ee
+我们便证明了诺特定理。
+\end{frame}
+\begin{frame}\frametitle{一个例子：能量动量张量}
+考虑时空平移的无穷小变换
+\be
+x^\nu \rightarrow x^\nu - \epsilon^\nu
+\ee
+则拉氏密度作如下变换
+\be
+\lag(x)\rightarrow \lag(x) + \epsilon^\nu \partial_\nu \lag(x)
+\ee
+代入诺特定理，得到时空平移的守恒流为
+\be
+j^\mu = \frac{\partial \lag}{\partial(\partial_\mu \phi)}\epsilon^\nu\partial_\nu \phi  -\epsilon^\mu \lag(x)
+\ee
+我们可以去掉$\epsilon^\nu$，从而提取出一个张量
+\be
+(j^\mu)_\nu =\frac{\partial \lag}{\partial(\partial_\mu \phi)}\partial_\nu \phi  -\delta^\mu_\nu \lag(x)\equiv T^\mu_\nu
+\ee
+这就是能量动量张量。对应于在经典力学里我们老生常谈的:时间平移不变性对应能量守恒，空间平移不变性对应动量守恒。
+\end{frame}
+\begin{frame}\frametitle{小练习:KG场的能量动量张量}
+套用上面的公式，求出KG场的能量动量张量
+\be
+\lag = \frac{1}{2} \eta^{\mu\nu} \partial_\mu \phi \partial_\nu \phi -\frac{1}{2}m^2\phi^2
+\ee
+\end{frame}
+\begin{frame}\frametitle{角动量守恒}
+大家回去自己尝试推导在无穷小洛伦兹变换下
+\be
+\Lambda^T \eta \Lambda = \eta
+\ee
+的守恒流。
+\end{frame}
+\begin{frame}\frametitle{内禀对称性}
+例如对于复数场
+\be
+\lag = \partial_\mu \psi^{*}\partial^\mu \psi - V(|\psi|^2)
+\ee
+拉氏密度在如下变换下保持不变
+\be
+\psi \rightarrow \psi e^{i\alpha}
+\ee
+这种对称性被叫做$U(1)$对称性，试着得到$U(1)$对称性的守恒流。一会我们将看到这个守恒流的意义。
+\end{frame}
+\section{正则量子化}
+\begin{frame}\frametitle{正则量子化一般步骤}
+我们现在要建立场的量子化描述，一般步骤如下
+\begin{enumerate}	
+	\item  写出拉氏密度。
+	\item  写出哈密顿密度。$\hamiltonian = \pi^a\cdot \dot{\phi}_a-\lag$
+	\item 引入对易关系。
+	\item 将场使用产生湮灭算符展开，代入哈密顿量。
+	\item  Normal Ordering.
+\end{enumerate}
+\end{frame}
+\begin{frame}\frametitle{一个例子：标量场量子化}
+我们先来搞个最简单的
+\be
+\lag = \frac12 \partial^\mu\phi\partial_\mu \phi-\frac12 m^2 \phi^2
+\ee
+瞬间得到哈密顿量
+\be
+\hamiltonian = \frac12 \dot{\phi}^2 + \frac12 (\nabla \phi)^2+ \frac12 m^2\phi^2
+\ee
+将场变为算符，引入对易关系
+\be
+\left[\hat{\phi}(t,\vec{x}),\hat{\pi}^0(t,\vec{y})\right] = i\delta^{(3)}(\vec{x}-\vec{y})
+\ee
+\end{frame}
+\begin{frame}\frametitle{相对论归一化}
+我们希望我们接下来书写的一些表达式都是相对论不变的。显然，下面的式子
+\be
+\int d^4p \delta(0) = \int d^4p \delta(p_0^2 - \vec{p}^2-m^2) 
+\ee
+是洛伦兹不变的，利用厂主神奇公式$\delta(f(x)) = \sum_n \frac{\delta(x-x_n)}{f^{\prime}(x_n)}$，得到
+\be
+\int d^4p \delta(p_0^2 - \vec{p}^2-m^2) = \int \frac{d^3p}{2E_{\vec{p}}}
+\ee
+是洛伦兹不变的。
+\end{frame}
+\begin{frame}\frametitle{相对论归一化}
+我们还可以得到$2E_{\vec{p}} \delta^{3} (\vec{p}-\vec{q})$是洛伦兹不变的。我们还可以定义相对论归一化的态$|p\rangle = \sqrt{2E_{\vec{p}}}|\vec{p}\rangle$，他们满足
+\be
+\langle p|q\rangle = 2E_{\vec{p}} \delta^{(3)}(\vec{p}-\vec{q})
+\ee
+\end{frame}
+\begin{frame}\frametitle{产生湮灭算符}
+可以将场用产生湮灭算符展开
+\be
+\hat{\phi}(\vec{x}) = \int \frac{d^3p}{(2\pi)^{\frac32}}\frac{1}{\sqrt{2E_{\vec{p}}}}(\hat{a}_{\vec{p}}e^{i\vec{p}\cdot\vec{x}}+\hat{a}^\dagger_{\vec{p}}e^{-i\vec{p}\cdot\vec{x}})
+\ee
+如果我们考虑海森堡绘景
+\be
+\hat{\phi}(x) = \hat{U}^\dagger \hat{\phi}(\vec{x})\hat{U}=e^{i\hat{H}t} \hat{\phi}(\vec{x})e^{-i\hat{H}t}
+\ee
+先计算$\hat{U}^\dagger a_{\vec{p}} \hat{U}$
+\end{frame}
+\begin{frame}
+利用对易关系$[H,\hat{a}_{\vec{p}}]=-E_{\vec{p}}a_{\vec{p}}$
+和公式
+\be
+e^{\hat{A}}\hat{B}e^{-\hat{A}} = \hat{B}+ \left[\hat{A},\hat{B}\right]+ \frac{1}{2!}\left[ A,\left[\hat{A},\hat{B}\right]\right]+\cdots
+\ee
+我们得到
+\be
+e^{i\hat{H}t}a_{\vec{p}}e^{-i\hat{H}t} = a_{\vec{p}}e^{-iE_{\vec{p}} t}
+\ee
+\end{frame}
+\begin{frame}\frametitle{最终形式}
+最终我们得到
+\be
+\hat{\phi}(\vec{x}) = \int \frac{d^3p}{(2\pi)^{\frac32}}\frac{1}{\sqrt{2E_{\vec{p}}}}(\hat{a}_{\vec{p}}e^{-ip\cdot x}+\hat{a}^\dagger_{\vec{p}}e^{ip\cdot x})
+\ee
+另外从对易关系我们可以得到升降算符的对易
+\end{frame}
+\begin{frame}\frametitle{哈密顿量}
+将上面的表达式带入到哈密顿量中
+\be
+H = \frac{1}{2} \int d^3x \dot{\phi}^2 + (\nabla \phi)^2+m^2 \phi^2
+\ee
+进行一顿计算后得到
+\be
+H = \int d^3p E_{\vec{p}} \left(\hat{a}^\dagger_{\vec{p}}\hat{a}_{\vec{p}} + \frac{1}{2}\delta^{(3)} (0)\right)
+\ee
+可见最后一项必然导致发散，那么怎么处理呢？
+\end{frame}
+\begin{frame}\frametitle{Normal Ordering}
+有一种解释就是我们只关心能量差，因此直接把后面那项扔掉。我们只关心产生算符在前，湮灭算符在后的项，这种产生在前，湮灭在后的顺序就叫做Normal Ordering，用$N$来表示Normal Ordering，有
+\be
+N[\hat{A}\hat{B}\hat{C}^\dagger\cdots \hat{Z}] = (\text{creation operators on the left})\equiv :\hat{A}\hat{B}\hat{C}^\dagger\cdots \hat{Z}:
+\ee
+对于玻色场，上面的ordering没有问题。注意对于费米场，会额外多一个排序因子$(-1)^P$。
+\end{frame}
+\begin{frame}\frametitle{Casimir Effect}
+你以为这样扔掉就完了吗？没有粒子的真空那部分能量不会体现吗？考虑一个长为$L$的盒子，考虑中间有两块平行板$d$。将哈密顿量拿过来
+\be
+H = \int d^3p  E_{\vec{p}} \frac{1}{2}\delta^{(3)} (0)
+\ee
+回忆$\delta$函数相当于空间的体积
+\be
+(2\pi)^3 \delta^{(3)}(0) = \lim_{L\rightarrow \infty}\int_{-L/2}^{L/2}d^3x e^{i\vec{p}\cdot\vec{x}}\arrowvert_{\vec{p}=0}=V
+\ee
+因此蕴含在两板之间的能量
+\be
+E\sim \frac{n\pi}{2d}
+\ee
+\end{frame}
+\begin{frame}\frametitle{Ultraviolet cut-off}
+但是两板之间的能量仍然是无穷的，实验中一般使用电磁场，我们知道电磁场在高频的时候就不很好的遵循低频边界条件了，所以我们直接让高频的部分能量衰减。
+\be
+E(d)\sim \sum_n \frac{n\pi}{2d} e^{-n\pi a/d}\simeq \frac{d}{2\pi a^2} - \frac{\pi}{24d}+\cdots
+\ee
+真正的能量是
+\be
+E = E(d)+ E(L-d)
+\ee
+最终能计算出受力
+\be
+F = -\frac{\partial E}{\partial d} = -\frac{\pi}{24d^2}
+\ee
+这就是Casimir效应，这告诉我们两个板放在一起会损失一些模式，从而表现为负能量。另一个解释是这个力起源于真空中的涨落(正反粒子对的产生和湮灭)。
 \end{frame}
 
+\begin{frame}\frametitle{Feynman's Interpreatation of the negative frequency}
+\be
+\hat{\phi}(\vec{x}) = \int \frac{d^3p}{(2\pi)^{\frac32}}\frac{1}{\sqrt{2E_{\vec{p}}}}(\hat{a}_{\vec{p}}e^{-ip\cdot x}+\hat{a}^\dagger_{\vec{p}}e^{ip\cdot x})
+\ee
+盯着这个表达式，你会发现第一项似乎是“负能量态”，如何给这一个解释？费曼给出了一个猜想，负能量态就是产生一个反粒子向外跑，而正能量态是正粒子向内跑湮灭。对于这个标量场，它是自身的反粒子。
+\end{frame}
+\section{Complex Field}
+\secpage{复数场}{$\lag = \partial^\mu \psi^\dagger(x)\partial_\mu \psi(x)-m^2\psi^\dagger(x)\psi(x)$}
+\begin{frame}\frametitle{复数场的量子化}
+复数场的拉氏密度
+\be
+\lag = \partial^\mu \psi^\dagger(x)\partial_\mu \psi(x)-m^2\psi^\dagger(x)\psi(x)
+\ee
+得到哈密顿密度
+\be
+\hamiltonian =\partial_0 \psi^\dagger (x)\partial_0 \psi(x)+ \nabla \psi^\dagger(x)\cdot \nabla \psi(x) + m^2 \psi^\dagger(x)\psi(x)
+\ee
+引入对易关系
+\be
+\left[\hat{\psi}(t,\vec{x}),\hat{\pi}_\psi(t,\vec{y})\right]=\left[\hat{\psi}^\dagger(t,\vec{x}),\hat{\pi}_{\psi^\dagger}(t,\vec{y})\right]=i\delta^{(3)}(\vec{x}-\vec{y})\ee
+\end{frame}
+\begin{frame}{正反粒子}
+将场算符用产生湮灭算符展开
+\be
+\hat{\psi}(x) = \int \frac{d^3p}{(2\pi)^{3/2}}\frac{1}{\sqrt{2E_{\vec{p}}}} \left( \hat{a}_{\vec{p}}e^{-ip\cdot x} +  \hat{b}^\dagger_{\vec{p}} e^{ip\cdot x}\right)
+\ee
+其中$\hat{a}_{\vec{p}},\hat{b}^\dagger_{\vec{p}}$分别湮灭两种不同的粒子，又由于这两种粒子具有相同的能量，所以我们把它们解释为正反粒子。
+\end{frame}
+\begin{frame}{哈密顿量}
+将上述展开带入哈密顿量中，并进行normal ordering，得到
+\be
+\hat{H} = \int d^3p E_p \left(a^\dagger_p a_p+b^\dagger_pb_p\right)
+\ee
+\end{frame}
+\begin{frame}{守恒流}
+回顾之前$U(1)$对称性导致的复数场的守恒流
+\be
+J^\mu = i[(\partial^\mu \psi^\dagger)\psi-(\partial^\mu\psi)\psi^\dagger]
+\ee
+考虑守恒荷$j^0$，将之前的展开带入，进行normal ordering 得到
+\be
+N[\hat{Q}] = \int d^3 p (b^\dagger_pb_p-a^\dagger_pa_p)
+\ee
+使用粒子数算符，有
+\be
+Q = -N_a+N_b
+\ee
+这说明粒子数减去反粒子数守恒。这就是电荷守恒。一般来说，对正粒子选取正号，对于反粒子选取负号，即上面的整个式子差个负号。
+\end{frame}
+\begin{frame}\frametitle{非相对论极限}
+非相对论情形下能量为
+\be
+E = mc^2 + \epsilon
+\ee
+其中$\epsilon$是一个小量，取非相对论极限的步骤就是将$mc^2$的演化部分分离出来，即
+\be
+\phi(x)\rightarrow \psi (x)e^{-imt}
+\ee
+例如对于KG方程$(\partial^2+m^2)\psi(x)e^{-imt}$，我们将上面的式子代入并做一些近似得到
+\be
+i \hbar\partial_t \psi = -\frac{\hbar^2}{2m}\nabla^2 \psi
+\ee
+即自由粒子的薛定谔方程。
+\end{frame}
+\begin{frame}\frametitle{复数场的情形}
+对于复数场，我们采取如下分离方式
+\be
+\psi = \frac{1}{\sqrt{2m}} e^{-imt} \Psi
+\ee
+将这个带入到拉氏量中，得到
+\be
+\lag = i \Psi^\dagger(x)\partial_0(x) -\frac{1}{2m}\nabla \Psi^\dagger(x)\cdot \Psi(x) -\frac{g}{2}[\Psi^\dagger(x)\Psi(x)]^2
+\ee
+试着将这个场量子化，如果懒，就看看书上Example 12.4。书上还给出了另一种有趣的量子化方式，大家可以随便看看。
+\end{frame}
+\section{很多分量的场}
+\secpage{很多分量的场}{升降算符数目取决于场的独立分量数}
+\begin{frame}{同位旋}
+1932年，海森堡发现质子的质量和中子的质量十分相近$m_p\simeq m_n$，并认为他们是同一个东西，它们组成一个类似于自旋$1/2$的系统，在一种特定的变换下可以相互转换。我们知道$SU(2)\simeq SO(3)$，我们先来考虑一个$SO(3)$的同位旋系统。假设$SO(3)$的weights分别对应与三种粒子$(t,d,h)$(short for Tom, Dick, Harry)。因为场是粒子的激发态，所以我们猜测需要三个场来描述。
+\end{frame}
+\begin{frame}\frametitle{拉氏量}
+于是我们的场为$\vec{\Phi}(x) = (\phi_1(x),\phi_2(x),\phi_3(x))$，随便构造一个$SO(3)$(对场变换)的拉氏量
+\be
+\lag = \frac12 (\partial^\mu \vec{\Phi})\cdot (\partial_\mu \vec{\Phi}) - \frac{m^2}{2}\vec{\Phi}\cdot \vec{\Phi}
+\ee
+现在将场量子化，首先计算哈密顿密度
+\be
+\hamiltonian = \sum_\alpha \left[\frac12 (\partial_0 \phi_\alpha)^2+\frac12 (\nabla \phi_\alpha)^2+\frac12 m^2 \phi_\alpha^2\right]
+\ee
+\end{frame}
+\begin{frame}\frametitle{对易关系和展开}
+因此可以引入对易关系，由于我们认为三个场是独立的，有
+\be
+[\Phi_\alpha(x),\pi_\beta(y)] = i \delta^3 (\vec{x}-\vec{y})\delta_{\alpha\beta}
+\ee
+所以需要引入三组产生湮灭算符，将场展开为
+\be
+\vec{\Phi}(x) = \int \frac{d^3p}{(2\pi)^{3/2}} \sum_{\alpha=1}^3 \vec{h}_\alpha \left(a_{\vec{p}\alpha}e^{-ip\cdot x}+a^\dagger_{\vec{p}\alpha}e^{ip\cdot x}  \right)
+\ee
+其中$\vec{h}_1 = (1,0,0),\cdots$
+\end{frame}
+\begin{frame}\frametitle{诺特定理}
+回忆三维空间的无穷小转动
+\be
+\begin{pmatrix}
+1 &\theta_3 &-\theta_2 \\
+-\theta^3 &1 &\theta_1 \\
+\theta_2 & -\theta_1 & 1
+\end{pmatrix}
+\begin{pmatrix}\phi_1 \\\phi_2 \\ \phi_3 \end{pmatrix}
+\ee
+可以写为
+\be
+\Phi_i \rightarrow \Phi_i - \epsilon_{ijk}\theta_j \Phi_k
+\ee
+使用诺特定理，得到守恒流
+\be
+(j^\mu)_j = \epsilon_{jik} (\partial^\mu \phi_i)\phi_k
+\ee
+这里的守恒荷就是同位旋。
+\end{frame}
+\section{Guage Field}
+\begin{frame}\frametitle{规范对称性}
+考虑复数场
+\be
+\lag = (\partial^\mu \psi)^\dagger(\partial_\mu \psi)- m^2 \psi^\dagger\psi
+\ee
+作$U(1)$变换$\psi\rightarrow \psi e^{i\alpha}$，拉氏量不变。但是如果$\alpha$依赖于时空坐标$\alpha(x)$，那么不变性就不成立。这就说明这个场论不是全局对称的，而是局域对称的。为了使得不变性成立，引入一个新的场并定义一个新的协变导数算符
+\be
+D_\mu = \partial_\mu +iq A_\mu(x)
+\ee
+其中$A_\mu$按照如下规则变换
+\be
+A_\mu \rightarrow A_\mu - \frac{1}{q}\partial_\mu \alpha(x)
+\ee
+可以证明，在变换下$D(\psi)\rightarrow D(\psi e^{i\alpha})$，所以拉氏量改写为
+\be
+\lag = (D^\mu\psi)^\dagger (D_\mu \psi) -m^2\psi^\dagger\psi
+\ee
+\end{frame}
+\begin{frame}\frametitle{规范场的拉氏量}
+对于规范场，引入拉氏量
+\be
+\lag =-\frac{1}{4}F_{\mu\nu}F^{\mu\nu}-A^\mu J^\mu
+\ee
+运动方程就是麦克斯韦方程组。如果进行规范变换
+\be
+A_\mu(x) \rightarrow A_\mu(x) - \partial_\mu \chi(x)
+\ee
+则不会改变观测量。可见场的选择有一定任意性，可以进行规范固定，如选取洛伦兹规范
+\be
+\partial_\mu A^\mu =0
+\ee
+但是这样还不能完全固定场，还可以加上一个$\partial^2\epsilon=0$的场。如果再选取库伦规范$\nabla \cdot \vec{A}=0$，有了这两个规范，场的独立分量就是$4-1-1=2$个，意味着光子有两种偏振态。
+\end{frame}
+\begin{frame}\frametitle{场量子化}
+拉氏量
+\be
+\lag = -\frac{1}{4} F_{\mu\nu}F^{\mu\nu}
+\ee
+求得哈密顿量
+\be
+\hamiltonian = \frac{1}{2}(\vec{E}^2+ \vec{B}^2)
+\ee
+引入对易关系,为了保证规范不变，我们取
+\be
+[A^i(x),E^j(y)] = i \int \frac{d^3p}{(2\pi)^3}e^{i(\vec{x}-\vec{y})}\left(\delta^{ij}- \frac{p^ip^j}{p^2}\right) = i \delta_{\rm tr}^{(3)}(\vec{x}-\vec{y})
+\ee
+仍然有$[\hat{a}_{\vec{p}\lambda},\hat{a}^\dagger_{\vec{p}\lambda}]=\delta^{(3)}(\vec{p}-\vec{q})\delta_{\lambda\lambda^{\prime}}$
+\end{frame}
+
+\begin{frame}
+将场展开为
+\be
+A^\mu (x) = \int \frac{d^3p}{(2\pi)^{3/2}} \sum_{\lambda=1}^2 \left(\epsilon_\lambda^\mu a_{\vec{p}\lambda}e^{-ip\cdot x}+\epsilon_\lambda^{\mu *} a^\dagger_{\vec{p}\lambda}e^{ip\cdot x} \right)
+\ee
+将这个代入哈密顿量，据说就能得到
+\be
+\hat{H}= \int d^3p \sum_\lambda E_{\vec{p}}a^\dagger_{\vec{p}\lambda} a_{\vec{p}\lambda}
+\ee
+解释为光子。
+\end{frame} 
 \end{document}

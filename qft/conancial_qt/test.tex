@@ -1,0 +1,93 @@
+\documentclass[11pt]{beamer}
+\input{macros.tex}
+\graphicspath{{figures/}}
+
+
+\newcommand{\field}{\mathscr{F}}
+
+\newcommand{\reals}{\mathbb{R}}
+\newcommand{\complexs}{\mathbb{C}}
+\newcommand{\ints}{\mathbb{Z}}
+%\newcommand{\dim}{\mathrm{dim\ }}
+\newcommand{\diag}{\mathrm{diag \ }}
+\newcommand{\up}{\uparrow}
+\newcommand{\down}{\downarrow}
+\newcommand{\su}{\mathfrak{su}}
+\newcommand{\so}{\mathfrak{so}}
+\newcommand{\tr}{\mathrm{tr\ }}
+\newcommand{\card}{\mathrm{card \ }}
+\newcommand{\lag}{\mathcal{L}}
+\newcommand{\hamiltonian}{\mathcal{H}}
+\newcommand{\op}{\mathcal{O}}
+\newtheorem{thm}{定理}[section]
+\newtheorem{axm}{公理}[section]
+\newtheorem{dfn}{定义}[section]
+\newtheorem{experience}{经验}[section]
+
+
+%\cpic{<尺寸>}{<文件名>}}用于生成居中的图片。
+\newcommand{\cpic}[2]{
+\begin{center}
+\includegraphics[scale=#1]{#2}
+\end{center}
+}
+
+%\cpicn{<尺寸>}{<文件名>}{<注释>}用于生成居中且带有注释的图片，其label为图片名。
+\newcommand{\cpicn}[3]
+{
+\begin{figure}[h!]
+\cpic{#1}{#2}
+\caption{#3\label{#2}}
+\end{figure}
+}
+
+\title{Quantum Field Theory\\ 正则量子化}
+  \author{Haoting Xu}
+  \date{\today}
+
+
+\begin{document}
+
+\begin{frame}\frametitle{相对论归一化}
+我们还可以得到$2E_\vec{p} \delta^{3} (\vec{p}-\vec{q})$是洛伦兹不变的。我们还可以定义相对论归一化的态$|p\rangle = \sqrt{2E_{\vec{p}}}|\vec{p}\rangle$，他们满足
+\be
+\langle p|q\rangle = 2E_\vec{p} \delta^{(3)}(\vec{p}-\vec{q})
+\ee
+\end{frame}
+\begin{frame}\frametitle{产生湮灭算符}
+可以将场用产生湮灭算符展开
+\be
+\hat{\phi}(\vec{x}) = \int \frac{d^3p}{(2\pi)^{\frac32}}\frac{1}{\sqrt{2E_\vec{p}}}(\hat{a}_\vec{p}e^{i\vec{p}\cdot\vec{x}}+\hat{a}^\dagger_\vec{p}e^{-i\vec{p}\cdot\vec{x}})
+\ee
+如果我们考虑海森堡绘景
+\be
+\hat{\phi}(x) = \hat{U}^\dagger \hat{\phi}(\vec{x})\hat{U}=e^{i\hat{H}t} \hat{\phi}(\vec{x})e^{-i\hat{H}t}
+\ee
+先计算$\hat{U}^\dagger a_\vec{p} \hat{U}$
+\end{frame}
+\begin{frame}
+利用对易关系$[H,\hat{a}_\vec{p}]=-E_\vec{p}a_\vec{p}$
+和公式
+\be
+e^\hat{A}\hat{B}e^{-\hat{A}} = \hat{B}+ \left[\hat{A},\hat{B}\right]+ \frac{1}{2!}\left[ A,\left[\hat{A},\hat{B}\right]\right]+\cdots
+\ee
+我们得到
+\be
+e^{i\hat{H}t}a_\vec{p}e^{-i\hat{H}t} = a_\vec{p}e^{-iE_\vec{p} t}
+\ee
+\end{frame}
+\begin{frame}\frametitle{最终形式}
+最终我们得到
+\be
+\hat{\phi}(\vec{x}) = \int \frac{d^3p}{(2\pi)^{\frac32}}\frac{1}{\sqrt{2E_\vec{p}}}(\hat{a}_\vec{p}e^{-ip\cdot x}+\hat{a}^\dagger_\vec{p}e^{ip\cdot x})
+\ee
+另外从对易关系我们可以得到升降算符的对易
+\end{frame}
+\begin{frame}\frametitle{哈密顿量}
+将上面的表达式带入到哈密顿量中
+\be
+H = \frac{1}{2} \int d^3x \dot{\phi}^2 + (\nabla \phi)^2+m^2 \phi^2
+\ee
+进行一顿计算后得到
+\end{frame}
+\end{document}
